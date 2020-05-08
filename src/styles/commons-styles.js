@@ -5,7 +5,10 @@ export const colors = {
   primaryColor: '#2A3C44',
   secundaryColor: '#30444E',
   textPrimaryColor: '#96A7AF',
+  black: '#000000',
+  white: '#FFFFFF',
   yellowHeader: '#FFC542',
+  greenButton: '#3FDA9C',
   tomato: 'rgb(240, 85, 85)',
 };
 

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   titleLogin: {
-    color: 'white',
+    color: colors.white,
     fontSize: 24,
     textAlign: 'center',
   },
