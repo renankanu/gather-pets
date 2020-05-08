@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 
@@ -36,6 +37,11 @@ export default function ForgotPassword() {
             style={styles.inputStyle}
           />
           <Spacer value={16} />
+          <Icon.Button name="facebook" backgroundColor="#3b5998">
+            <Text style={{fontFamily: 'Arial', fontSize: 15}}>
+              Login with Facebook
+            </Text>
+          </Icon.Button>
           <TouchableOpacity style={styles.buttonForgot}>
             <Text style={[styles.labelForgot, commonsStyle.fontMedium]}>
               Send
