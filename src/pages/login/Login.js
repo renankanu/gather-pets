@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
 import {commonsStyle, colors} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 
 const Login = () => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
@@ -54,7 +56,10 @@ const Login = () => {
           </Text>
         </TouchableOpacity>
         <Spacer value={12} />
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('ForgotPassword');
+          }}>
           <Text style={[styles.labelForgot, commonsStyle.fontBold]}>
             Forgot password?
           </Text>

@@ -1,0 +1,33 @@
+{
+  "componentFunctional": {
+    "prefix": "_rnfc",
+    "body": [
+      "import React from 'react';",
+      "import {View, Text, StatusBar, StyleSheet} from 'react-native';",
+      "import {SafeAreaView} from 'react-native-safe-area-context';",
+      "import {colors, commonsStyle} from '../../styles/commons-styles';",
+      "",
+      "export default function ${1:${TM_FILENAME_BASE/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}}() {",
+      "  return (",
+      "    <SafeAreaView style={commonsStyle.backgroundApp}>",
+      "      <StatusBar",
+      "        barStyle=\"light-content\"",
+      "        backgroundColor={colors.backgroundAppColor}",
+      "      />",
+      "      <View style={styles.container}>",
+      "        <Text>${1:${TM_FILENAME_BASE/^.*(\\/|\\\\)([^(\\/|\\\\)]+)$/$2/}}</Text>",
+      "      </View>",
+      "    </SafeAreaView>",
+      "  );",
+      "}",
+      "",
+      "const styles = StyleSheet.create({",
+      "  container: {",
+      "    flex: 1,",
+      "  },",
+      "});",
+      "",
+    ],
+    "description": "Create React Native Functional Component"
+  },
+}
