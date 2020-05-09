@@ -23,9 +23,7 @@ const Login = () => {
         backgroundColor={colors.backgroundAppColor}
       />
       <View style={styles.container}>
-        <Text style={[styles.nameApp, commonsStyle.fontMedium]}>
-          Gather Pets
-        </Text>
+        <Text style={[styles.nameApp]}>Gather Pets</Text>
         <View style={styles.cardLogin}>
           <View style={styles.containerInput}>
             <Feather
@@ -78,9 +76,7 @@ const Login = () => {
           onPress={() => {
             navigation.navigate('ForgotPassword');
           }}>
-          <Text style={[styles.labelForgot, commonsStyle.fontBold]}>
-            Forgot password?
-          </Text>
+          <Text style={[styles.labelForgot]}>Forgot password?</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -95,6 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   nameApp: {
+    fontFamily: 'VisbyCF-Bold',
     textAlign: 'center',
     fontSize: 24,
     marginBottom: 12,
@@ -150,14 +147,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.yellowHeader,
   },
   labelLogin: {
+    fontFamily: 'VisbyCF-Bold',
     fontSize: 14,
     color: colors.primaryColor,
   },
   labelForgot: {
+    fontFamily: 'VisbyCF-Bold',
     textAlign: 'center',
     color: colors.greenButton,
   },
   dontHave: {
+    fontFamily: 'VisbyCF-Bold',
     textAlign: 'center',
     color: colors.white,
   },

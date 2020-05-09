@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   titleLogin: {
+    fontFamily: 'VisbyCF-Medium',
     color: colors.white,
     fontSize: 24,
     textAlign: 'center',
