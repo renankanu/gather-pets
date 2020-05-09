@@ -6,9 +6,10 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 
@@ -19,14 +20,24 @@ export default function ForgotPassword() {
         barStyle="light-content"
         backgroundColor={colors.backgroundAppColor}
       />
+      <TouchableOpacity style={styles.backButton}>
+        <Feather name="chevron-left" size={32} color="#96A7AF" />
+      </TouchableOpacity>
       <View style={styles.container}>
+        <Spacer value={100} />
         <Text style={styles.title}>Forgot Password ?</Text>
-        <View style={styles.containerCenter}>
-          <Text style={styles.desc}>
-            Enter your registered email above to receivepassword reset
-            instruction
-          </Text>
-          <Spacer value={42} />
+        <Spacer value={100} />
+        <Text style={styles.desc}>
+          Enter your registered email above to receivepassword reset instruction
+        </Text>
+        <Spacer value={42} />
+        <View style={styles.containerInput}>
+          <Feather
+            style={styles.iconInput}
+            name="mail"
+            size={16}
+            color="#96A7AF"
+          />
           <TextInput
             autoCorrect={false}
             autoCapitalize="none"
@@ -36,18 +47,13 @@ export default function ForgotPassword() {
             placeholderTextColor={colors.textPrimaryColor}
             style={styles.inputStyle}
           />
-          <Spacer value={16} />
-          <Icon.Button name="facebook" backgroundColor="#3b5998">
-            <Text style={{fontFamily: 'Arial', fontSize: 15}}>
-              Login with Facebook
-            </Text>
-          </Icon.Button>
-          <TouchableOpacity style={styles.buttonForgot}>
-            <Text style={[styles.labelForgot, commonsStyle.fontMedium]}>
-              Send
-            </Text>
-          </TouchableOpacity>
         </View>
+        <Spacer value={16} />
+        <TouchableOpacity style={styles.buttonForgot}>
+          <Text style={[styles.labelForgot, commonsStyle.fontMedium]}>
+            Send
+          </Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -58,8 +64,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
+  backButton: {
+    padding: 10,
+  },
   title: {
-    fontSize: 24,
+    fontSize: 32,
     color: colors.textPrimaryColor,
   },
   containerCenter: {
@@ -70,11 +79,23 @@ const styles = StyleSheet.create({
     color: colors.textPrimaryColor,
     textAlign: 'center',
   },
+  iconInput: {
+    paddingLeft: 14,
+    paddingRight: Platform.OS === 'android' ? 4 : 8,
+  },
   inputStyle: {
-    backgroundColor: colors.secundaryColor,
     color: colors.white,
     fontSize: 16,
-    padding: 12,
+    flex: 1,
+    borderRadius: 10,
+    paddingBottom: 16,
+    paddingTop: 16,
+    paddingRight: 16,
+  },
+  containerInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.secundaryColor,
     borderRadius: 10,
     borderColor: colors.backgroundAppColor,
     borderWidth: 1,
