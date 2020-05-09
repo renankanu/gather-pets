@@ -10,17 +10,25 @@ import {
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
+
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 
 export default function ForgotPassword() {
+  const navigation = useNavigation();
+
+  const comeBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
         barStyle="light-content"
         backgroundColor={colors.backgroundAppColor}
       />
-      <TouchableOpacity style={styles.backButton}>
+      <TouchableOpacity onPress={comeBack} style={styles.backButton}>
         <Feather name="chevron-left" size={32} color="#96A7AF" />
       </TouchableOpacity>
       <View style={styles.container}>
