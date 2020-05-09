@@ -6,9 +6,11 @@ import {
   StatusBar,
   TextInput,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
+import Feather from 'react-native-vector-icons/Feather';
 import {commonsStyle, colors} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 
@@ -25,24 +27,40 @@ const Login = () => {
           Gather Pets
         </Text>
         <View style={styles.cardLogin}>
-          <TextInput
-            autoCorrect={false}
-            autoCapitalize="none"
-            autoCompleteType="email"
-            keyboardType="email-address"
-            placeholder="login"
-            placeholderTextColor={colors.textPrimaryColor}
-            style={styles.inputStyle}
-          />
+          <View style={styles.containerInput}>
+            <Feather
+              style={styles.iconInput}
+              name="mail"
+              size={16}
+              color="#96A7AF"
+            />
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize="none"
+              autoCompleteType="email"
+              keyboardType="email-address"
+              placeholder="E-mail"
+              placeholderTextColor={colors.textPrimaryColor}
+              style={styles.inputStyle}
+            />
+          </View>
           <Spacer value={20} />
-          <TextInput
-            autoCorrect={false}
-            secureTextEntry={true}
-            autoCompleteType="password"
-            placeholder="password"
-            placeholderTextColor={colors.textPrimaryColor}
-            style={styles.inputStyle}
-          />
+          <View style={styles.containerInput}>
+            <Feather
+              style={styles.iconInput}
+              name="key"
+              size={16}
+              color="#96A7AF"
+            />
+            <TextInput
+              autoCorrect={false}
+              secureTextEntry={true}
+              autoCompleteType="password"
+              placeholder="Password"
+              placeholderTextColor={colors.textPrimaryColor}
+              style={styles.inputStyle}
+            />
+          </View>
           <Spacer value={32} />
           <Text style={styles.dontHave}>Don't have account? Sign up now</Text>
           {/* <Text style={styles.terms}>
@@ -78,7 +96,7 @@ const styles = StyleSheet.create({
   },
   nameApp: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 24,
     marginBottom: 12,
     color: colors.textPrimaryColor,
   },
@@ -97,10 +115,23 @@ const styles = StyleSheet.create({
 
     elevation: 5,
   },
+  iconInput: {
+    paddingLeft: 14,
+    paddingRight: Platform.OS === 'android' ? 4 : 8,
+  },
   inputStyle: {
     color: colors.white,
     fontSize: 16,
-    padding: 12,
+    flex: 1,
+    borderRadius: 10,
+    paddingBottom: 16,
+    paddingTop: 16,
+    paddingRight: 16,
+  },
+  containerInput: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.secundaryColor,
     borderRadius: 10,
     borderColor: colors.backgroundAppColor,
     borderWidth: 1,
