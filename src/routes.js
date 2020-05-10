@@ -5,6 +5,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {
   createStackNavigator,
   CardStyleInterpolators,
+  TransitionSpecs,
+  HeaderStyleInterpolators,
 } from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
@@ -22,6 +24,32 @@ const Stack = createStackNavigator();
 
 export default function Routes() {
   console.disableYellowBox = true;
+  const transition = {
+    gestureDirection: 'horizontal',
+    transitionSpec: {
+      open: TransitionSpecs.TransitionIOSSpec,
+      close: TransitionSpecs.TransitionIOSSpec,
+    },
+    headerStyleInterpolator: HeaderStyleInterpolators.forFade,
+    cardStyleInterpolator: ({current, layouts}) => ({
+      cardStyle: {
+        transform: [
+          {
+            translateY: current.progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [layouts.screen.height, 0],
+            }),
+          },
+        ],
+      },
+      overlayStyle: {
+        opacity: current.progress.interpolate({
+          inputRange: [0, 1],
+          outputRange: [0, 0.5],
+        }),
+      },
+    }),
+  };
 
   return (
     <SafeAreaProvider>
@@ -40,7 +68,11 @@ export default function Routes() {
           <Stack.Screen name="InitialScreen" component={InitialScreen} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-          <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{...transition}}
+          />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="MyProfile" component={MyProfile} />
