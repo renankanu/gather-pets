@@ -12,6 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Animatable from 'react-native-animatable';
 import {useNavigation} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {commonsStyle, colors} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 import fonts from '../../styles/fonts';
@@ -71,6 +72,24 @@ const Login = () => {
         </Animatable.View>
         <Spacer value={32} />
         <Animatable.View animation="slideInUp">
+          <View style={styles.orLogin}>
+            <View style={styles.divider} />
+            <Text style={styles.orSocialLabel}>
+              Or login using social media
+            </Text>
+            <View style={styles.divider} />
+          </View>
+          <Spacer value={12} />
+          <View style={styles.rowSocial}>
+            <TouchableOpacity style={styles.buttonFace}>
+              <FontAwesome name="facebook" size={24} color={colors.white} />
+            </TouchableOpacity>
+            <Spacer value={24} />
+            <TouchableOpacity style={styles.buttonGoogle}>
+              <FontAwesome name="google" size={24} color={colors.white} />
+            </TouchableOpacity>
+          </View>
+          <Spacer value={18} />
           <TouchableOpacity style={styles.buttonLogin}>
             <Text style={[styles.labelLogin, commonsStyle.fontMedium]}>
               Login
@@ -117,6 +136,41 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
 
     elevation: 5,
+  },
+  rowSocial: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonFace: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 48,
+    height: 48,
+    borderRadius: 48 / 2,
+    backgroundColor: colors.face,
+  },
+  buttonGoogle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 48,
+    height: 48,
+    borderRadius: 48 / 2,
+    backgroundColor: colors.google,
+  },
+  orLogin: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  divider: {
+    marginHorizontal: 20,
+    flex: 1,
+    height: 0.5,
+    backgroundColor: colors.grey,
+  },
+  orSocialLabel: {
+    textAlign: 'center',
+    color: colors.textPrimaryColor,
   },
   iconInput: {
     paddingLeft: 14,

@@ -9,6 +9,9 @@ export const colors = {
   white: '#FFFFFF',
   yellowHeader: '#FFC542',
   greenButton: '#3FDA9C',
+  face: '#3b5998',
+  google: '#DB4437',
+  grey: '#C0C0C0',
   tomato: 'rgb(240, 85, 85)',
 };
 
