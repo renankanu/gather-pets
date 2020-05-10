@@ -9,6 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import * as Animatable from 'react-native-animatable';
 import {useNavigation} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
 import {commonsStyle, colors} from '../../styles/commons-styles';
@@ -24,8 +25,10 @@ const Login = () => {
         backgroundColor={colors.backgroundAppColor}
       />
       <View style={styles.container}>
-        <Text style={[styles.nameApp]}>Gather Pets</Text>
-        <View style={styles.cardLogin}>
+        <Animatable.View animation="slideInDown">
+          <Text style={[styles.nameApp]}>Gather Pets</Text>
+        </Animatable.View>
+        <Animatable.View animation="fadeIn" style={styles.cardLogin}>
           <View style={styles.containerInput}>
             <Feather
               style={styles.iconInput}
@@ -65,20 +68,22 @@ const Login = () => {
           {/* <Text style={styles.terms}>
             By pressing 'Submit' you agree to our terms & condition
           </Text> */}
-        </View>
+        </Animatable.View>
         <Spacer value={32} />
-        <TouchableOpacity style={styles.buttonLogin}>
-          <Text style={[styles.labelLogin, commonsStyle.fontMedium]}>
-            Login
-          </Text>
-        </TouchableOpacity>
-        <Spacer value={12} />
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('ForgotPassword');
-          }}>
-          <Text style={[styles.labelForgot]}>Forgot password?</Text>
-        </TouchableOpacity>
+        <Animatable.View animation="slideInUp">
+          <TouchableOpacity style={styles.buttonLogin}>
+            <Text style={[styles.labelLogin, commonsStyle.fontMedium]}>
+              Login
+            </Text>
+          </TouchableOpacity>
+          <Spacer value={12} />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ForgotPassword');
+            }}>
+            <Text style={[styles.labelForgot]}>Forgot password?</Text>
+          </TouchableOpacity>
+        </Animatable.View>
       </View>
     </SafeAreaView>
   );
