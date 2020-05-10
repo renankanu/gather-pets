@@ -8,6 +8,7 @@ import * as Animatable from 'react-native-animatable';
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import {ImageBackground} from 'react-native';
 import login from '../../assets/images/login.jpeg';
+import fonts from '../../styles/fonts';
 
 const InitialScreen = () => {
   const navigation = useNavigation();
@@ -23,7 +24,8 @@ const InitialScreen = () => {
           <Animatable.View
             animation="slideInDown"
             style={styles.containerTitle}>
-            <Text style={styles.titleLogin}>Don't shop, adopt!</Text>
+            <Text style={styles.titleLogin}>Don't shop, adopt.</Text>
+            <Text style={styles.subTitleLogin}>Do not abandon, donate!</Text>
           </Animatable.View>
           <Animatable.View
             animation="slideInUp"
@@ -58,9 +60,15 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   titleLogin: {
-    fontFamily: 'VisbyCF-Medium',
+    fontFamily: fonts.MEDIUM,
     color: colors.white,
     fontSize: 24,
+    textAlign: 'center',
+  },
+  subTitleLogin: {
+    fontFamily: fonts.MEDIUM,
+    color: colors.white,
+    fontSize: 16,
     textAlign: 'center',
   },
   containerLogin: {

@@ -13,6 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
 import {commonsStyle, colors} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
+import fonts from '../../styles/fonts';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   nameApp: {
-    fontFamily: 'VisbyCF-Bold',
+    fontFamily: fonts.BOLD,
     textAlign: 'center',
     fontSize: 24,
     marginBottom: 12,
@@ -147,17 +148,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.yellowHeader,
   },
   labelLogin: {
-    fontFamily: 'VisbyCF-Bold',
+    fontFamily: fonts.BOLD,
     fontSize: 14,
     color: colors.primaryColor,
   },
   labelForgot: {
-    fontFamily: 'VisbyCF-Bold',
+    fontFamily: fonts.BOLD,
     textAlign: 'center',
     color: colors.greenButton,
   },
   dontHave: {
-    fontFamily: 'VisbyCF-Bold',
+    fontFamily: fonts.BOLD,
     textAlign: 'center',
     color: colors.white,
   },
