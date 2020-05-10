@@ -14,6 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
+import fonts from '../../styles/fonts';
 
 export default function ForgotPassword() {
   const navigation = useNavigation();
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     color: colors.textPrimaryColor,
+    fontFamily: fonts.BOLD,
   },
   containerCenter: {
     flex: 1,

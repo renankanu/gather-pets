@@ -19,6 +19,11 @@ import fonts from '../../styles/fonts';
 
 const Login = () => {
   const navigation = useNavigation();
+
+  const callRegister = () => {
+    navigation.navigate('Register');
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
@@ -65,7 +70,9 @@ const Login = () => {
             />
           </View>
           <Spacer value={32} />
-          <Text style={styles.dontHave}>Don't have account? Sign up now</Text>
+          <Text onPress={callRegister} style={styles.dontHave}>
+            Don't have account? Sign up now
+          </Text>
           {/* <Text style={styles.terms}>
             By pressing 'Submit' you agree to our terms & condition
           </Text> */}
