@@ -24,6 +24,10 @@ const Login = () => {
     navigation.navigate('Register');
   };
 
+  const callHome = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
@@ -97,7 +101,7 @@ const Login = () => {
             </TouchableOpacity>
           </View>
           <Spacer value={18} />
-          <TouchableOpacity style={styles.buttonLogin}>
+          <TouchableOpacity onPress={callHome} style={styles.buttonLogin}>
             <Text style={[styles.labelLogin, commonsStyle.fontMedium]}>
               Login
             </Text>
