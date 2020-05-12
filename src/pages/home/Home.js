@@ -49,16 +49,17 @@ export default function Home() {
         <View style={styles.containerContent}>
           <Spacer value={32} />
           <FlatList
+            contentContainerStyle={{marginHorizontal: 16}}
             data={[1, 2, 3]}
+            horizontal
             renderItem={(item) => {
               return (
                 <View
                   style={{
-                    marginHorizontal: 20,
+                    marginHorizontal: 8,
                     width: 50,
                     height: 50,
                     backgroundColor: 'red',
-                    marginBottom: 5,
                   }}
                 />
               );
