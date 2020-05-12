@@ -6,16 +6,16 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  ListView,
   FlatList,
   Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
-import {colors, commonsStyle} from '../../styles/commons-styles';
+import {colors} from '../../styles/commons-styles';
 import user from '../../assets/images/user.jpeg';
 import fonts from '../../styles/fonts';
 import Spacer from '../../components/Spacer';
+import CardItemListCategory from './components/CardItemListCategory';
 
 export default function Home() {
   return (
@@ -47,24 +47,10 @@ export default function Home() {
         </SafeAreaView>
         <Spacer value={Platform.OS === 'ios' ? 0 : 32} />
         <View style={styles.containerContent}>
+          <Spacer value={38} />
+          <CardItemListCategory />
           <Spacer value={32} />
-          <FlatList
-            contentContainerStyle={{marginHorizontal: 16}}
-            data={[1, 2, 3]}
-            horizontal
-            renderItem={(item) => {
-              return (
-                <View
-                  style={{
-                    marginHorizontal: 8,
-                    width: 50,
-                    height: 50,
-                    backgroundColor: 'red',
-                  }}
-                />
-              );
-            }}
-          />
+          <Text>asadasdads</Text>
         </View>
       </View>
     </View>
