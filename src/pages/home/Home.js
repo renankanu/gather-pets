@@ -15,6 +15,7 @@ import user from '../../assets/images/user.jpeg';
 import fonts from '../../styles/fonts';
 import Spacer from '../../components/Spacer';
 import ListCategory from './components/ListCategory';
+import ListAnimals from './components/ListAnimals';
 
 export default function Home() {
   return (
@@ -46,9 +47,19 @@ export default function Home() {
         </SafeAreaView>
         <Spacer value={Platform.OS === 'ios' ? 0 : 32} />
         <View style={styles.containerContent}>
-          <Spacer value={38} />
-          <ListCategory />
+          <View style={styles.containerCategorySearch}>
+            <Spacer value={38} />
+            <ListCategory />
+            <Spacer value={38} />
+            <View style={styles.containerSearch}>
+              <Feather name="search" size={24} color="#96A7AF" />
+              <Spacer value={8} />
+              <Text>Search pet for adaption</Text>
+            </View>
+            <Spacer value={38} />
+          </View>
           <Spacer value={32} />
+          <ListAnimals />
         </View>
       </View>
     </View>
@@ -104,8 +115,21 @@ const styles = StyleSheet.create({
   },
   containerContent: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: '#f5f5f5',
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
+  },
+  containerCategorySearch: {
+    backgroundColor: '#FFF',
+    borderRadius: 40,
+  },
+  containerSearch: {
+    marginHorizontal: 20,
+    paddingHorizontal: 12,
+    borderRadius: 23,
+    height: 46,
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
