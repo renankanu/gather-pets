@@ -53,7 +53,7 @@ const INITIAL_CATEGORY = [
   },
 ];
 
-export default function CardItemListCategory() {
+export default function ListCategory() {
   const [listCategories, setListCategories] = useState(INITIAL_CATEGORY);
 
   const selectCategory = (id) => {

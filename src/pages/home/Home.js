@@ -6,7 +6,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  FlatList,
   Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -15,16 +14,16 @@ import {colors} from '../../styles/commons-styles';
 import user from '../../assets/images/user.jpeg';
 import fonts from '../../styles/fonts';
 import Spacer from '../../components/Spacer';
-import CardItemListCategory from './components/CardItemListCategory';
+import ListCategory from './components/ListCategory';
 
 export default function Home() {
   return (
-    <View style={{flex: 1, backgroundColor: colors.yellowHeader}}>
+    <View style={styles.container}>
       <StatusBar
         barStyle="light-content"
         backgroundColor={colors.yellowHeader}
       />
-      <View style={styles.container}>
+      <View style={styles.subContainer}>
         <SafeAreaView>
           <View style={styles.headerHome}>
             <TouchableOpacity>
@@ -48,9 +47,8 @@ export default function Home() {
         <Spacer value={Platform.OS === 'ios' ? 0 : 32} />
         <View style={styles.containerContent}>
           <Spacer value={38} />
-          <CardItemListCategory />
+          <ListCategory />
           <Spacer value={32} />
-          <Text>asadasdads</Text>
         </View>
       </View>
     </View>
@@ -59,6 +57,10 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: colors.yellowHeader,
+  },
+  subContainer: {
     flex: 1,
   },
   headerHome: {
