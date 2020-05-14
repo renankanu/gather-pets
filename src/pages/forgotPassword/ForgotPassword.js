@@ -30,7 +30,11 @@ export default function ForgotPassword() {
         backgroundColor={colors.backgroundAppColor}
       />
       <TouchableOpacity onPress={comeBack} style={styles.backButton}>
-        <Feather name="chevron-left" size={32} color="#96A7AF" />
+        <Feather
+          name="chevron-left"
+          size={32}
+          color={colors.textPrimaryColor}
+        />
       </TouchableOpacity>
       <View style={styles.container}>
         <Spacer value={100} />
@@ -45,7 +49,7 @@ export default function ForgotPassword() {
             style={styles.iconInput}
             name="mail"
             size={16}
-            color="#96A7AF"
+            color={colors.textPrimaryColor}
           />
           <TextInput
             autoCorrect={false}

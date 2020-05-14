@@ -44,7 +44,7 @@ const Login = () => {
               style={styles.iconInput}
               name="mail"
               size={16}
-              color="#96A7AF"
+              color={colors.textPrimaryColor}
             />
             <TextInput
               autoCorrect={false}
@@ -62,7 +62,7 @@ const Login = () => {
               style={styles.iconInput}
               name="key"
               size={16}
-              color="#96A7AF"
+              color={colors.textPrimaryColor}
             />
             <TextInput
               autoCorrect={false}

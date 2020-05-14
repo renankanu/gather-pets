@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Platform,
+  TextInput,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
@@ -52,16 +53,25 @@ export default function Home() {
             <ListCategory />
             <Spacer value={38} />
             <View style={styles.containerSearch}>
-              <Feather name="search" size={24} color="#96A7AF" />
+              <TouchableOpacity>
+                <Feather
+                  name="search"
+                  size={24}
+                  color={colors.textPrimaryColor}
+                />
+              </TouchableOpacity>
               <Spacer value={8} />
-              <Text style={styles.placeholderSearch}>
-                Search pet for adaption
-              </Text>
+              <TextInput
+                placeholder="Search pet for adaption"
+                placeholderTextColor={colors.textPrimaryColor}
+                style={styles.placeholderSearch}
+              />
             </View>
-            <Spacer value={38} />
+            <Spacer value={48} />
           </View>
-          <Spacer value={32} />
-          <ListAnimals />
+          <View style={styles.containerListAnimals}>
+            <ListAnimals />
+          </View>
         </View>
       </View>
     </View>
@@ -98,6 +108,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.LIGHT,
   },
   placeholderSearch: {
+    flex: 1,
     fontFamily: fonts.LIGHT,
     color: colors.primaryColor,
   },
@@ -137,5 +148,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bonJour,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  containerListAnimals: {
+    flex: 1,
+    marginTop: -20,
   },
 });

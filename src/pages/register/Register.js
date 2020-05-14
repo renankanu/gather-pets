@@ -30,7 +30,11 @@ export default function Register() {
         backgroundColor={colors.backgroundAppColor}
       />
       <TouchableOpacity onPress={comeBack} style={styles.backButton}>
-        <Feather name="chevron-left" size={32} color="#96A7AF" />
+        <Feather
+          name="chevron-left"
+          size={32}
+          color={colors.textPrimaryColor}
+        />
       </TouchableOpacity>
       <Spacer value={50} />
       <Text style={styles.title}>Register</Text>
@@ -42,7 +46,7 @@ export default function Register() {
               style={styles.iconInput}
               name="user"
               size={16}
-              color="#96A7AF"
+              color={colors.textPrimaryColor}
             />
             <TextInput
               autoCorrect={false}
@@ -58,7 +62,7 @@ export default function Register() {
               style={styles.iconInput}
               name="phone"
               size={16}
-              color="#96A7AF"
+              color={colors.textPrimaryColor}
             />
             <TextInput
               autoCorrect={false}
@@ -75,7 +79,7 @@ export default function Register() {
               style={styles.iconInput}
               name="mail"
               size={16}
-              color="#96A7AF"
+              color={colors.textPrimaryColor}
             />
             <TextInput
               autoCorrect={false}
@@ -93,7 +97,7 @@ export default function Register() {
               style={styles.iconInput}
               name="key"
               size={16}
-              color="#96A7AF"
+              color={colors.textPrimaryColor}
             />
             <TextInput
               autoCorrect={false}
@@ -110,7 +114,7 @@ export default function Register() {
               style={styles.iconInput}
               name="key"
               size={16}
-              color="#96A7AF"
+              color={colors.textPrimaryColor}
             />
             <TextInput
               autoCorrect={false}
