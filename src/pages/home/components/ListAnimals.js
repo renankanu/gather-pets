@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {colors} from '../../../styles/commons-styles';
 import dog1 from '../../../assets/images/dog1.jpeg';
+import fonts from '../../../styles/fonts';
 
 const {width} = Dimensions.get('window');
 
@@ -45,11 +46,12 @@ const styles = StyleSheet.create({
   },
   cardAnimal: {
     marginBottom: 24,
-    borderRadius: 5,
     width: (width - 70) / 2,
     marginHorizontal: 8,
     alignItems: 'center',
     shadowColor: colors.black,
+    borderRadius: 10,
+    backgroundColor: colors.white,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -69,10 +71,9 @@ const styles = StyleSheet.create({
   containerInfo: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -15,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: colors.white,
-    width: (width - 70) / 2,
+    height: 46,
+  },
+  title: {
+    fontFamily: fonts.BOLD,
   },
 });

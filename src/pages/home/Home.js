@@ -54,7 +54,9 @@ export default function Home() {
             <View style={styles.containerSearch}>
               <Feather name="search" size={24} color="#96A7AF" />
               <Spacer value={8} />
-              <Text>Search pet for adaption</Text>
+              <Text style={styles.placeholderSearch}>
+                Search pet for adaption
+              </Text>
             </View>
             <Spacer value={38} />
           </View>
@@ -95,6 +97,10 @@ const styles = StyleSheet.create({
   labelCountry: {
     fontFamily: fonts.LIGHT,
   },
+  placeholderSearch: {
+    fontFamily: fonts.LIGHT,
+    color: colors.primaryColor,
+  },
   dotOnline: {
     width: 8,
     height: 8,
@@ -115,12 +121,12 @@ const styles = StyleSheet.create({
   },
   containerContent: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: colors.bonJour,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
   },
   containerCategorySearch: {
-    backgroundColor: '#FFF',
+    backgroundColor: colors.white,
     borderRadius: 40,
   },
   containerSearch: {
@@ -128,7 +134,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 23,
     height: 46,
-    backgroundColor: 'red',
+    backgroundColor: colors.bonJour,
     flexDirection: 'row',
     alignItems: 'center',
   },
