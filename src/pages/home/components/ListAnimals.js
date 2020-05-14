@@ -23,12 +23,10 @@ export default function ListAnimals() {
         numColumns={2}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity>
-              <View style={styles.cardAnimal}>
-                <Image style={styles.image} source={dog1} />
-                <View style={styles.containerInfo}>
-                  <Text style={styles.title}>Ted, 2 years</Text>
-                </View>
+            <TouchableOpacity style={styles.cardAnimal}>
+              <Image style={styles.image} source={dog1} />
+              <View style={styles.containerInfo}>
+                <Text style={styles.title}>Ted, 2 years</Text>
               </View>
             </TouchableOpacity>
           );

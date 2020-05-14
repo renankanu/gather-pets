@@ -80,13 +80,13 @@ export default function ListCategory() {
         horizontal
         renderItem={({item}) => {
           return (
-            <TouchableOpacity
-              onPress={() => {
-                selectCategory(item.id);
-              }}>
+            <TouchableOpacity>
               <Spacer value={4} />
               <View style={styles.constainer}>
-                <View
+                <TouchableOpacity
+                  onPress={() => {
+                    selectCategory(item.id);
+                  }}
                   style={[
                     styles.containerCard,
                     item.isSelected
@@ -97,7 +97,7 @@ export default function ListCategory() {
                     style={styles.image}
                     source={item.isSelected ? item.image : item.imageDisable}
                   />
-                </View>
+                </TouchableOpacity>
                 <Spacer value={6} />
                 <Text
                   style={[
@@ -139,7 +139,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-
     elevation: 5,
   },
   titleCategory: {
