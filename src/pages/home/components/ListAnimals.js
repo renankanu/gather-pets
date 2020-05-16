@@ -11,6 +11,7 @@ import {
 import {colors} from '../../../styles/commons-styles';
 import dog1 from '../../../assets/images/dog1.jpeg';
 import fonts from '../../../styles/fonts';
+import {dogs, cats, birds, reptiles, all} from '../../../mocks';
 
 const {width} = Dimensions.get('window');
 
@@ -20,14 +21,15 @@ export default function ListAnimals() {
       <FlatList
         contentContainerStyle={styles.containerFlatList}
         keyExtractor={(item) => item.id}
-        data={[1, 2, 3]}
+        data={all}
         numColumns={2}
         renderItem={({item}) => {
           return (
             <TouchableOpacity style={styles.cardAnimal}>
-              <Image style={styles.image} source={dog1} />
+              <Image style={styles.image} source={item.photo} />
               <View style={styles.containerInfo}>
-                <Text style={styles.title}>Ted, 2 years</Text>
+                <Text
+                  style={styles.title}>{`${item.name}, ${item.years}`}</Text>
               </View>
             </TouchableOpacity>
           );
