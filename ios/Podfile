@@ -81,6 +81,8 @@ target 'gather_pets' do
 
   pod 'RNSharedElement', :path => '../node_modules/react-native-shared-element'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'gather_petsTests' do
     inherit! :complete
     # Pods for testing
