@@ -22,6 +22,17 @@ import rep1 from '../assets/images/rep1.jpeg';
 import rep2 from '../assets/images/rep2.jpeg';
 import rep3 from '../assets/images/rep3.jpeg';
 
+import allAnimals from '../assets/images/all.png';
+import dog from '../assets/images/dog.png';
+import cat from '../assets/images/cat.png';
+import bird from '../assets/images/bird.png';
+import reptile from '../assets/images/reptile.png';
+import allDisable from '../assets/images/allDisable.png';
+import dogDisable from '../assets/images/dogDisable.png';
+import catDisable from '../assets/images/catDisable.png';
+import birdDisable from '../assets/images/birdDisable.png';
+import reptileDisable from '../assets/images/reptileDisable.png';
+
 export const dogs = [
   {id: 1, name: 'Ted', years: '2 Years', photo: dog1},
   {id: 2, name: 'Joe', years: '6 Months', photo: dog2},
@@ -75,4 +86,42 @@ export const all = [
   {id: 18, name: 'Paplaak', years: '6 Months', photo: rep1},
   {id: 19, name: 'Chickeeslilu', years: '1 Years', photo: rep2},
   {id: 20, name: 'Ted', years: '2 Years', photo: dog1},
+];
+
+export const categories = [
+  {
+    id: 1,
+    name: 'All',
+    image: allAnimals,
+    imageDisable: allDisable,
+    isSelected: true,
+  },
+  {
+    id: 2,
+    name: 'Dogs',
+    image: dog,
+    imageDisable: dogDisable,
+    isSelected: false,
+  },
+  {
+    id: 3,
+    name: 'Cats',
+    image: cat,
+    imageDisable: catDisable,
+    isSelected: false,
+  },
+  {
+    id: 4,
+    name: 'Birds',
+    image: bird,
+    imageDisable: birdDisable,
+    isSelected: false,
+  },
+  {
+    id: 5,
+    name: 'Reptile',
+    image: reptile,
+    imageDisable: reptileDisable,
+    isSelected: false,
+  },
 ];
