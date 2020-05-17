@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {colors} from '../../../styles/commons-styles';
 import fonts from '../../../styles/fonts';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {dogs, cats, birds, reptiles, all} from '../../../mocks';
 
 const {width} = Dimensions.get('window');
@@ -21,6 +21,7 @@ export default function ListAnimals() {
 
   useEffect(() => {
     getCategorySelected();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [animalsCategory]);
 
   const getCategorySelected = () => {
