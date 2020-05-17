@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -10,64 +10,24 @@ import {
 import {colors} from '../../../styles/commons-styles';
 import Spacer from '../../../components/Spacer';
 import fonts from '../../../styles/fonts';
-import all from '../../../assets/images/all.png';
-import dog from '../../../assets/images/dog.png';
-import cat from '../../../assets/images/cat.png';
-import bird from '../../../assets/images/bird.png';
-import reptile from '../../../assets/images/reptile.png';
-import allDisable from '../../../assets/images/allDisable.png';
-import dogDisable from '../../../assets/images/dogDisable.png';
-import catDisable from '../../../assets/images/catDisable.png';
-import birdDisable from '../../../assets/images/birdDisable.png';
-import reptileDisable from '../../../assets/images/reptileDisable.png';
-
-const INITIAL_CATEGORY = [
-  {id: 1, name: 'All', image: all, imageDisable: allDisable, isSelected: true},
-  {
-    id: 2,
-    name: 'Dogs',
-    image: dog,
-    imageDisable: dogDisable,
-    isSelected: false,
-  },
-  {
-    id: 3,
-    name: 'Cats',
-    image: cat,
-    imageDisable: catDisable,
-    isSelected: false,
-  },
-  {
-    id: 4,
-    name: 'Birds',
-    image: bird,
-    imageDisable: birdDisable,
-    isSelected: false,
-  },
-  {
-    id: 5,
-    name: 'Reptile',
-    image: reptile,
-    imageDisable: reptileDisable,
-    isSelected: false,
-  },
-];
+import {useDispatch, useSelector} from 'react-redux';
+import {updateAnimalCategories} from '../../../store/modules/animal/actions';
 
 export default function ListCategory() {
-  const [listCategories, setListCategories] = useState(INITIAL_CATEGORY);
+  const {animalsCategory} = useSelector((state) => state.animal);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('Categories', animalsCategory);
+  }, [animalsCategory]);
 
   const selectCategory = (id) => {
-    let newArrayCategory = listCategories
-      .map((itemCategory) => {
-        itemCategory.isSelected = false;
-        return itemCategory;
-      })
-      .map((subItemCategory) => {
-        return subItemCategory.id === id
-          ? {...subItemCategory, isSelected: true}
-          : subItemCategory;
-      });
-    setListCategories(newArrayCategory);
+    let newArrayCategory = animalsCategory.map((itemCategory) => {
+      return itemCategory.id === id
+        ? {...itemCategory, isSelected: true}
+        : {...itemCategory, isSelected: false};
+    });
+    dispatch(updateAnimalCategories(newArrayCategory));
   };
 
   return (
@@ -76,7 +36,7 @@ export default function ListCategory() {
         contentContainerStyle={styles.containerFlatList}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
-        data={listCategories}
+        data={animalsCategory}
         horizontal
         renderItem={({item}) => {
           return (

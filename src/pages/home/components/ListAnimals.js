@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -9,19 +9,49 @@ import {
   Dimensions,
 } from 'react-native';
 import {colors} from '../../../styles/commons-styles';
-import dog1 from '../../../assets/images/dog1.jpeg';
 import fonts from '../../../styles/fonts';
+import {useDispatch, useSelector} from 'react-redux';
 import {dogs, cats, birds, reptiles, all} from '../../../mocks';
 
 const {width} = Dimensions.get('window');
 
 export default function ListAnimals() {
+  const [categoriSelected, setCategoriSelected] = useState(all);
+  const {animalsCategory} = useSelector((state) => state.animal);
+
+  useEffect(() => {
+    getCategorySelected();
+  }, [animalsCategory]);
+
+  const getCategorySelected = () => {
+    const categorySelected = animalsCategory.find((category) => {
+      return category.isSelected === true;
+    });
+    switch (categorySelected.id) {
+      case 2:
+        setCategoriSelected(dogs);
+        break;
+      case 3:
+        setCategoriSelected(cats);
+        break;
+      case 4:
+        setCategoriSelected(birds);
+        break;
+      case 5:
+        setCategoriSelected(reptiles);
+        break;
+      default:
+        setCategoriSelected(all);
+        break;
+    }
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         contentContainerStyle={styles.containerFlatList}
         keyExtractor={(item) => item.id}
-        data={all}
+        data={categoriSelected}
         numColumns={2}
         renderItem={({item}) => {
           return (

@@ -19,8 +19,12 @@ import MyProfile from './pages/myProfile/MyProfile';
 import Favorite from './pages/favorite/Favorite';
 import InitialScreen from './pages/login/InitialScreen';
 import Login from './pages/login/Login';
+import {Provider} from 'react-redux';
+import rootReducer from './store/modules/rootReducer';
+import {createStore} from 'redux';
 
 const Stack = createStackNavigator();
+const store = createStore(rootReducer);
 
 export default function Routes() {
   console.disableYellowBox = true;
@@ -52,34 +56,36 @@ export default function Routes() {
   };
 
   return (
-    <SafeAreaProvider>
-      <StatusBar
-        barStyle="light-content"
-        translucent
-        backgroundColor="transparent"
-      />
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="InitialScreen"
-          headerMode="none"
-          screenOptions={{
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-          }}>
-          <Stack.Screen name="InitialScreen" component={InitialScreen} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-          <Stack.Screen
-            name="Register"
-            component={Register}
-            options={{...transition}}
-          />
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Search" component={Search} />
-          <Stack.Screen name="MyProfile" component={MyProfile} />
-          <Stack.Screen name="Favorite" component={Favorite} />
-          <Stack.Screen name="About" component={About} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <StatusBar
+          barStyle="light-content"
+          translucent
+          backgroundColor="transparent"
+        />
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="InitialScreen"
+            headerMode="none"
+            screenOptions={{
+              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            }}>
+            <Stack.Screen name="InitialScreen" component={InitialScreen} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+            <Stack.Screen
+              name="Register"
+              component={Register}
+              options={{...transition}}
+            />
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Search" component={Search} />
+            <Stack.Screen name="MyProfile" component={MyProfile} />
+            <Stack.Screen name="Favorite" component={Favorite} />
+            <Stack.Screen name="About" component={About} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </Provider>
   );
 }
