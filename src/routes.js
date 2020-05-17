@@ -8,6 +8,7 @@ import {
   TransitionSpecs,
   HeaderStyleInterpolators,
 } from '@react-navigation/stack';
+import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import About from './pages/about/About';
@@ -22,8 +23,9 @@ import Login from './pages/login/Login';
 import {Provider} from 'react-redux';
 import rootReducer from './store/modules/rootReducer';
 import {createStore} from 'redux';
+import InfoPet from './pages/infoPet/InfoPet';
 
-const Stack = createStackNavigator();
+const Stack = createSharedElementStackNavigator();
 const store = createStore(rootReducer);
 
 export default function Routes() {
@@ -79,6 +81,14 @@ export default function Routes() {
               options={{...transition}}
             />
             <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen
+              name="InfoPet"
+              component={InfoPet}
+              sharedElementsConfig={(route, otherRoute, showing) => {
+                const {pet} = route.params;
+                return [`item.${pet.id}.photo`];
+              }}
+            />
             <Stack.Screen name="Search" component={Search} />
             <Stack.Screen name="MyProfile" component={MyProfile} />
             <Stack.Screen name="Favorite" component={Favorite} />

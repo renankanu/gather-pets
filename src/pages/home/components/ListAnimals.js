@@ -11,12 +11,15 @@ import {
 import {colors} from '../../../styles/commons-styles';
 import fonts from '../../../styles/fonts';
 import {useSelector} from 'react-redux';
+import {SharedElement} from 'react-navigation-shared-element';
 import {dogs, cats, birds, reptiles, all} from '../../../mocks';
+import {useNavigation} from '@react-navigation/native';
 
 const {width} = Dimensions.get('window');
 
 export default function ListAnimals() {
   const [categoriSelected, setCategoriSelected] = useState(all);
+  const navigation = useNavigation();
   const {animalsCategory} = useSelector((state) => state.animal);
 
   useEffect(() => {
@@ -56,8 +59,14 @@ export default function ListAnimals() {
         numColumns={2}
         renderItem={({item}) => {
           return (
-            <TouchableOpacity style={styles.cardAnimal}>
-              <Image style={styles.image} source={item.photo} />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('InfoPet', {pet: item});
+              }}
+              style={styles.cardAnimal}>
+              <SharedElement style={styles.image} id={`item.${item.id}.photo`}>
+                <Image style={styles.image} source={item.photo} />
+              </SharedElement>
               <View style={styles.containerInfo}>
                 <Text
                   style={styles.title}>{`${item.name}, ${item.years}`}</Text>
