@@ -3,7 +3,6 @@ import {StatusBar} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {
-  createStackNavigator,
   CardStyleInterpolators,
   TransitionSpecs,
   HeaderStyleInterpolators,
@@ -57,6 +56,12 @@ export default function Routes() {
     }),
   };
 
+  const forFade = ({current, closing}) => ({
+    cardStyle: {
+      opacity: current.progress,
+    },
+  });
+
   return (
     <Provider store={store}>
       <SafeAreaProvider>
@@ -71,6 +76,8 @@ export default function Routes() {
             headerMode="none"
             screenOptions={{
               cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              useNativeDriver: true,
+              gestureEnabled: false,
             }}>
             <Stack.Screen name="InitialScreen" component={InitialScreen} />
             <Stack.Screen name="Login" component={Login} />
@@ -84,9 +91,10 @@ export default function Routes() {
             <Stack.Screen
               name="InfoPet"
               component={InfoPet}
+              options={{cardStyleInterpolator: forFade}}
               sharedElementsConfig={(route, otherRoute, showing) => {
                 const {pet} = route.params;
-                return [`item.${pet.id}.photo`];
+                return [`item.${pet.name}.photo`];
               }}
             />
             <Stack.Screen name="Search" component={Search} />

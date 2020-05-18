@@ -64,7 +64,9 @@ export default function ListAnimals() {
                 navigation.navigate('InfoPet', {pet: item});
               }}
               style={styles.cardAnimal}>
-              <SharedElement style={styles.image} id={`item.${item.id}.photo`}>
+              <SharedElement
+                style={styles.image}
+                id={`item.${item.name}.photo`}>
                 <Image style={styles.image} source={item.photo} />
               </SharedElement>
               <View style={styles.containerInfo}>
