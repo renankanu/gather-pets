@@ -27,20 +27,18 @@ export default function InfoPet({route}) {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={[colors.black, colors.transparent]}
-        style={styles.linearGradient}
-      />
-      <Spacer value={60} />
-      <TouchableOpacity onPress={comeBack} style={styles.backButton}>
-        <Feather
-          name="chevron-left"
-          size={32}
-          color={colors.textPrimaryColor}
-        />
-      </TouchableOpacity>
+        colors={[colors.black, colors.black80, colors.transparent]}
+        style={styles.linearGradient}>
+        <Spacer value={40} />
+        <TouchableOpacity onPress={comeBack} style={styles.backButton}>
+          <Feather name="chevron-left" size={32} color={colors.white} />
+        </TouchableOpacity>
+      </LinearGradient>
+
       <SharedElement id={`item.${pet.name}.photo`}>
-        <Image source={pet.photo} />
+        <Image style={styles.images} source={pet.photo} />
       </SharedElement>
+      <Text>aaa</Text>
     </View>
   );
 }
@@ -50,15 +48,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   linearGradient: {
-    height: 40,
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     zIndex: 99,
   },
+  sharedElement: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: -1,
+  },
   images: {
     height: height / 2,
     resizeMode: 'cover',
+  },
+  backButton: {
+    padding: 10,
   },
 });
