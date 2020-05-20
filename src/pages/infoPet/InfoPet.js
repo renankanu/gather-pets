@@ -2,19 +2,17 @@ import React from 'react';
 import {
   View,
   Text,
-  StatusBar,
   StyleSheet,
   Image,
   TouchableOpacity,
   Dimensions,
   ScrollView,
 } from 'react-native';
-import {SharedElement} from 'react-navigation-shared-element';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import {sanFranciscoWeights} from 'react-native-typography';
-import {colors, commonsStyle} from '../../styles/commons-styles';
+import {colors} from '../../styles/commons-styles';
 import {useNavigation} from '@react-navigation/native';
 import Spacer from '../../components/Spacer';
 import fonts from '../../styles/fonts';
