@@ -3,11 +3,11 @@ import {StatusBar} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {
+  createStackNavigator,
   CardStyleInterpolators,
   TransitionSpecs,
   HeaderStyleInterpolators,
 } from '@react-navigation/stack';
-import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import About from './pages/about/About';
@@ -24,7 +24,7 @@ import rootReducer from './store/modules/rootReducer';
 import {createStore} from 'redux';
 import InfoPet from './pages/infoPet/InfoPet';
 
-const Stack = createSharedElementStackNavigator();
+const Stack = createStackNavigator();
 const store = createStore(rootReducer);
 
 export default function Routes() {
@@ -56,12 +56,6 @@ export default function Routes() {
     }),
   };
 
-  const forFade = ({current, closing}) => ({
-    cardStyle: {
-      opacity: current.progress,
-    },
-  });
-
   return (
     <Provider store={store}>
       <SafeAreaProvider>
@@ -88,15 +82,7 @@ export default function Routes() {
               options={{...transition}}
             />
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen
-              name="InfoPet"
-              component={InfoPet}
-              options={{cardStyleInterpolator: forFade}}
-              sharedElementsConfig={(route, otherRoute, showing) => {
-                const {pet} = route.params;
-                return [`item.${pet.name}.photo`];
-              }}
-            />
+            <Stack.Screen name="InfoPet" component={InfoPet} />
             <Stack.Screen name="Search" component={Search} />
             <Stack.Screen name="MyProfile" component={MyProfile} />
             <Stack.Screen name="Favorite" component={Favorite} />

@@ -40,9 +40,7 @@ export default function InfoPet({route}) {
         </TouchableOpacity>
       </LinearGradient>
 
-      <SharedElement id={`item.${pet.name}.photo`}>
-        <Image style={styles.images} source={pet.photo} />
-      </SharedElement>
+      <Image style={styles.images} source={pet.photo} />
       <View style={styles.cardInfo}>
         <View style={styles.rowCardInfo}>
           <Text style={styles.name}>Martha</Text>

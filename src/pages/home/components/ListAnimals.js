@@ -11,7 +11,6 @@ import {
 import {colors} from '../../../styles/commons-styles';
 import fonts from '../../../styles/fonts';
 import {useSelector} from 'react-redux';
-import {SharedElement} from 'react-navigation-shared-element';
 import {dogs, cats, birds, reptiles, all} from '../../../mocks';
 import {useNavigation} from '@react-navigation/native';
 
@@ -64,11 +63,7 @@ export default function ListAnimals() {
                 navigation.navigate('InfoPet', {pet: item});
               }}
               style={styles.cardAnimal}>
-              <SharedElement
-                style={styles.image}
-                id={`item.${item.name}.photo`}>
-                <Image style={styles.image} source={item.photo} />
-              </SharedElement>
+              <Image style={styles.image} source={item.photo} />
               <View style={styles.containerInfo}>
                 <Text
                   style={styles.title}>{`${item.name}, ${item.years}`}</Text>
