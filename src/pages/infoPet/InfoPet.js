@@ -66,7 +66,7 @@ export default function InfoPet({route}) {
         <Image source={owner} style={styles.imageOwner} />
         <Spacer value={8} />
         <View>
-          <Text style={styles.nameOwner}>John Mik</Text>
+          <Text style={styles.nameOwner}>Johna Mik</Text>
           <Text style={styles.infoOwner}>Owner</Text>
         </View>
       </View>

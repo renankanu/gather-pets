@@ -17,8 +17,15 @@ import fonts from '../../styles/fonts';
 import Spacer from '../../components/Spacer';
 import ListCategory from './components/ListCategory';
 import ListAnimals from './components/ListAnimals';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Home() {
+  const navigation = useNavigation();
+
+  const callMyProfile = () => {
+    navigation.navigate('MyProfile');
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar
@@ -40,10 +47,10 @@ export default function Home() {
                 <Text style={styles.labelCountry}>, Brazil</Text>
               </View>
             </View>
-            <View>
+            <TouchableOpacity onPress={callMyProfile}>
               <Image style={styles.imageUser} source={user} />
               <View style={styles.dotOnline} />
-            </View>
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
         <Spacer value={Platform.OS === 'ios' ? 0 : 32} />
