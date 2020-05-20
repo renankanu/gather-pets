@@ -12,6 +12,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
 import {sanFranciscoWeights} from 'react-native-typography';
+import * as Animatable from 'react-native-animatable';
 import {colors} from '../../styles/commons-styles';
 import {useNavigation} from '@react-navigation/native';
 import Spacer from '../../components/Spacer';
@@ -39,7 +40,7 @@ export default function InfoPet({route}) {
       </LinearGradient>
 
       <Image style={styles.images} source={pet.photo} />
-      <View style={styles.cardInfo}>
+      <Animatable.View animation="fadeIn" style={styles.cardInfo}>
         <View style={styles.rowCardInfo}>
           <Text style={styles.name}>Martha</Text>
           <FontAwesome name="venus" size={18} color={colors.black} />
@@ -59,7 +60,7 @@ export default function InfoPet({route}) {
           <Spacer value={4} />
           <Text style={styles.address}>Av. São José, Cianorte - PR</Text>
         </View>
-      </View>
+      </Animatable.View>
       <Spacer value={20} />
       <View style={styles.containerOwner}>
         <Image source={owner} style={styles.imageOwner} />
@@ -83,7 +84,7 @@ export default function InfoPet({route}) {
         </Text>
       </View>
       <Spacer value={20} />
-      <View style={styles.containerActions}>
+      <Animatable.View animation="slideInUp" style={styles.containerActions}>
         <TouchableOpacity style={styles.buttonLike}>
           <Feather name="heart" size={16} color={colors.black} />
         </TouchableOpacity>
@@ -91,7 +92,7 @@ export default function InfoPet({route}) {
         <TouchableOpacity style={styles.buttonAdoption}>
           <Text style={styles.labelButton}>Adoption</Text>
         </TouchableOpacity>
-      </View>
+      </Animatable.View>
     </ScrollView>
   );
 }
