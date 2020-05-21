@@ -7,11 +7,14 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import {human} from 'react-native-typography';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 import user from '../../assets/images/user.jpeg';
+import fonts from '../../styles/fonts';
+import OptionMenu from './components/OptionMenu';
 
 export default function MyProfile() {
   return (
@@ -24,16 +27,37 @@ export default function MyProfile() {
         <TouchableOpacity style={styles.backButton}>
           <Feather name="chevron-left" size={32} color={colors.white} />
         </TouchableOpacity>
-        <Spacer value={40} />
+        <Spacer value={20} />
         <View style={styles.containePhoto}>
-          <Image style={styles.imageUser} source={user} />
+          <View>
+            <Image style={styles.imageUser} source={user} />
+            <View style={styles.iconCam}>
+              <Feather name="camera" size={18} color={colors.white} />
+            </View>
+          </View>
+        </View>
+        <Spacer value={10} />
+        <View style={styles.containerInfo}>
+          <Text style={styles.name}>John Just</Text>
+          <Text style={styles.email}>john@gatherpets.com</Text>
+          <Text style={styles.email}>(44) 91111-1111</Text>
         </View>
         <Spacer value={20} />
-        <View style={styles.containerInfo}>
-          <Text style={styles.title}>Name</Text>
-          <Text style={styles.value}>John</Text>
-          <Spacer value={4} />
-          <View style={styles.divider} />
+        <TouchableOpacity>
+          <Text style={styles.labelEditProfile}>Edit Profile</Text>
+        </TouchableOpacity>
+        <Spacer value={40} />
+        <View style={styles.containerActions}>
+          <OptionMenu title="Notifications" />
+          <OptionMenu title="My Favorites" />
+          <OptionMenu title="My adoptions" />
+          <OptionMenu title="Change Password" />
+          <OptionMenu title="About" />
+        </View>
+        <View style={styles.containerLogout}>
+          <TouchableOpacity>
+            <Text style={styles.labelLogout}>Logout</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -54,21 +78,48 @@ const styles = StyleSheet.create({
     borderColor: colors.white,
     borderWidth: 2,
   },
+  iconCam: {
+    width: 28,
+    height: 28,
+    borderRadius: 28 / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.textPrimaryColor,
+    position: 'absolute',
+    right: -6,
+    bottom: -6,
+  },
   containePhoto: {
     alignItems: 'center',
   },
   containerInfo: {
-    marginHorizontal: 20,
+    alignItems: 'center',
   },
-  title: {
+  name: {
+    fontFamily: fonts.MEDIUM,
+    color: colors.textPrimaryColor,
+    fontSize: 20,
+  },
+  email: {
+    fontFamily: fonts.MEDIUM,
     color: colors.textPrimaryColor,
   },
-  value: {
-    color: colors.white,
-    fontSize: 18,
+  labelEditProfile: {
+    ...human.callout,
+    color: colors.greenButton,
+    textAlign: 'center',
   },
-  divider: {
-    height: 0.5,
-    backgroundColor: colors.silver,
+  containerActions: {
+    marginHorizontal: 20,
+  },
+  containerLogout: {
+    flex: 1,
+    marginLeft: 20,
+    justifyContent: 'flex-end',
+    marginBottom: 40,
+  },
+  labelLogout: {
+    ...human.callout,
+    color: colors.tomato,
   },
 });
