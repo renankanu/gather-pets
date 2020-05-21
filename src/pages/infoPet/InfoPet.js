@@ -88,6 +88,10 @@ export default function InfoPet({route}) {
         <TouchableOpacity style={styles.buttonLike}>
           <Feather name="heart" size={16} color={colors.black} />
         </TouchableOpacity>
+        <Spacer value={10} />
+        <TouchableOpacity style={styles.buttonLike}>
+          <Feather name="message-circle" size={16} color={colors.black} />
+        </TouchableOpacity>
         <Spacer value={20} />
         <TouchableOpacity style={styles.buttonAdoption}>
           <Text style={styles.labelButton}>Adoption</Text>
