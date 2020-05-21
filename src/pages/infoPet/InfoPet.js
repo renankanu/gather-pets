@@ -42,7 +42,7 @@ export default function InfoPet({route}) {
       <Image style={styles.images} source={pet.photo} />
       <Animatable.View animation="fadeIn" style={styles.cardInfo}>
         <View style={styles.rowCardInfo}>
-          <Text style={styles.name}>Martha</Text>
+          <Text style={styles.name}>Tyson</Text>
           <FontAwesome name="venus" size={18} color={colors.black} />
         </View>
         <Spacer value={6} />
@@ -75,7 +75,7 @@ export default function InfoPet({route}) {
         <Text style={styles.titleInfo}>Pet Story</Text>
         <Spacer value={10} />
         <Text style={styles.descInfo}>
-          Martha is a 1 year-old Husky/Malamute mix who has gone through collar
+          Tyson is a 1 year-old Husky/Malamute mix who has gone through collar
           recall training. He is an active guy who needs the same in his forever
           home. The sweet guy would love to go to the dog park, hiking, etc with
           his new family. Tyson is ready to go and would love to be an active
