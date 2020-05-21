@@ -35,9 +35,7 @@ export default function Home() {
       <View style={styles.subContainer}>
         <SafeAreaView>
           <View style={styles.headerHome}>
-            <TouchableOpacity>
-              <Feather name="align-left" size={24} color={colors.black} />
-            </TouchableOpacity>
+            <Spacer value={24} />
             <View>
               <Text style={styles.labelLocation}>Location</Text>
               <View style={styles.locationContainer}>

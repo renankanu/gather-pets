@@ -15,8 +15,15 @@ import Spacer from '../../components/Spacer';
 import user from '../../assets/images/user.jpeg';
 import fonts from '../../styles/fonts';
 import OptionMenu from './components/OptionMenu';
+import {useNavigation} from '@react-navigation/native';
 
 export default function MyProfile() {
+  const navigation = useNavigation();
+
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
@@ -24,7 +31,7 @@ export default function MyProfile() {
         backgroundColor={colors.backgroundAppColor}
       />
       <View style={styles.container}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity onPress={goBack} style={styles.backButton}>
           <Feather name="chevron-left" size={32} color={colors.white} />
         </TouchableOpacity>
         <Spacer value={20} />
