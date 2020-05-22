@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
+  StatusBar,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {sanFranciscoWeights} from 'react-native-typography';
+import LinearGradient from 'react-native-linear-gradient';
 import * as Animatable from 'react-native-animatable';
 import {colors} from '../../styles/commons-styles';
 import {useNavigation} from '@react-navigation/native';
@@ -34,7 +36,16 @@ export default function InfoPet({route}) {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.linearGradient}>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={colors.transparent}
+      />
+      <LinearGradient
+        colors={[colors.black, colors.black20, colors.transparent]}
+        style={styles.linearGradient}>
+        <Spacer value={40} />
+      </LinearGradient>
+      <View style={styles.containerHeader}>
         <Spacer value={40} />
         <View style={styles.containerActionsHeader}>
           <TouchableOpacity onPress={comeBack} style={styles.backButton}>
@@ -112,17 +123,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  containerActionsHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
   linearGradient: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    zIndex: 99,
+    zIndex: 7,
+  },
+  containerActionsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  containerHeader: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 6,
   },
   sharedElement: {
     position: 'absolute',
