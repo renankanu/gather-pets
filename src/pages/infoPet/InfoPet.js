@@ -28,16 +28,24 @@ export default function InfoPet({route}) {
   const comeBack = () => {
     navigation.goBack();
   };
+
+  const share = () => {
+    console.log('Share');
+  };
+
   return (
     <ScrollView style={styles.container}>
-      <LinearGradient
-        colors={[colors.black, colors.black80, colors.transparent]}
-        style={styles.linearGradient}>
+      <View style={styles.linearGradient}>
         <Spacer value={40} />
-        <TouchableOpacity onPress={comeBack} style={styles.backButton}>
-          <Feather name="chevron-left" size={32} color={colors.white} />
-        </TouchableOpacity>
-      </LinearGradient>
+        <View style={styles.containerActionsHeader}>
+          <TouchableOpacity onPress={comeBack} style={styles.backButton}>
+            <Feather name="chevron-left" size={32} color={colors.white} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={share} style={styles.backButton}>
+            <Feather name="share-2" size={24} color={colors.white} />
+          </TouchableOpacity>
+        </View>
+      </View>
 
       <Image style={styles.images} source={pet.photo} />
       <Animatable.View animation="fadeIn" style={styles.cardInfo}>
@@ -105,6 +113,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  containerActionsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   linearGradient: {
     position: 'absolute',
     top: 0,
@@ -124,7 +137,14 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   backButton: {
-    padding: 10,
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 40 / 2,
+    marginHorizontal: 16,
+    padding: 4,
+    backgroundColor: colors.black20,
   },
   cardInfo: {
     marginTop: -40,

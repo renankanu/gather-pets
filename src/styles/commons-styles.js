@@ -6,7 +6,7 @@ export const colors = {
   secundaryColor: '#30444E',
   textPrimaryColor: '#96A7AF',
   black: '#000000',
-  black80: '#00000055',
+  black20: 'rgba(0, 0, 0, 0.2)',
   white: '#FFFFFF',
   transparent: '#FFFFFF00',
   yellowHeader: '#FFC542',
