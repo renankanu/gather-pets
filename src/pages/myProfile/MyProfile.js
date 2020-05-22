@@ -71,19 +71,18 @@ export default function MyProfile() {
         </View>
         <Spacer value={20} />
         <TouchableOpacity>
-          <Text style={styles.labelEditProfile}>Edit Profile</Text>
+          <Text style={styles.labelEditProfile}>Editar Perfil</Text>
         </TouchableOpacity>
         <Spacer value={40} />
         <View style={styles.containerActions}>
-          <OptionMenu title="Notifications" />
-          <OptionMenu title="My Favorites" />
-          <OptionMenu title="My adoptions" />
-          <OptionMenu title="Change Password" />
-          <OptionMenu title="About" />
+          <OptionMenu title="Notificações" />
+          <OptionMenu title="Meus Favoritos" />
+          <OptionMenu title="Alterar Senha" />
+          <OptionMenu title="Sobre" />
         </View>
         <View style={styles.containerLogout}>
           <TouchableOpacity onPress={callLogout}>
-            <Text style={styles.labelLogout}>Logout</Text>
+            <Text style={styles.labelLogout}>Sair</Text>
           </TouchableOpacity>
         </View>
       </View>
