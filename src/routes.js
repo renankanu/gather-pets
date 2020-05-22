@@ -23,6 +23,7 @@ import {Provider} from 'react-redux';
 import rootReducer from './store/modules/rootReducer';
 import {createStore} from 'redux';
 import InfoPet from './pages/infoPet/InfoPet';
+import Notification from './pages/notification/Notification';
 
 const Stack = createStackNavigator();
 const store = createStore(rootReducer);
@@ -83,6 +84,7 @@ export default function Routes() {
             <Stack.Screen name="InfoPet" component={InfoPet} />
             <Stack.Screen name="Search" component={Search} />
             <Stack.Screen name="MyProfile" component={MyProfile} />
+            <Stack.Screen name="Notification" component={Notification} />
             <Stack.Screen name="Favorite" component={Favorite} />
             <Stack.Screen name="About" component={About} />
           </Stack.Navigator>

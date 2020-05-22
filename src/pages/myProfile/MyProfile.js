@@ -44,6 +44,14 @@ export default function MyProfile() {
     );
   };
 
+  const callNotification = () => {
+    navigation.navigate('Notification');
+  };
+
+  const callFavorite = () => {
+    navigation.navigate('Favorite');
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
@@ -75,8 +83,8 @@ export default function MyProfile() {
         </TouchableOpacity>
         <Spacer value={40} />
         <View style={styles.containerActions}>
-          <OptionMenu title="Notificações" />
-          <OptionMenu title="Meus Favoritos" />
+          <OptionMenu title="Notificações" action={callNotification} />
+          <OptionMenu title="Meus Favoritos" action={callFavorite} />
           <OptionMenu title="Alterar Senha" />
           <OptionMenu title="Sobre" />
         </View>

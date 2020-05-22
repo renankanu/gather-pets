@@ -4,10 +4,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import {colors} from '../../../styles/commons-styles';
 import Spacer from '../../../components/Spacer';
 
-export default function OptionMenu({title}) {
+export default function OptionMenu({title, action}) {
   return (
     <>
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity onPress={action} style={styles.container}>
         <Text style={styles.title}>{title}</Text>
         <Feather
           name="chevron-right"
