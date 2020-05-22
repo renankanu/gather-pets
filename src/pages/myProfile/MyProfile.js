@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -15,13 +15,33 @@ import Spacer from '../../components/Spacer';
 import user from '../../assets/images/user.jpeg';
 import fonts from '../../styles/fonts';
 import OptionMenu from './components/OptionMenu';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, CommonActions} from '@react-navigation/native';
+import CustomModalYesNo from '../../components/CustomModalYesNo';
 
 export default function MyProfile() {
   const navigation = useNavigation();
+  const [isVisible, setIsVisible] = useState(false);
 
   const goBack = () => {
     navigation.goBack();
+  };
+
+  const callLogout = () => {
+    setIsVisible(true);
+  };
+
+  const actionNo = () => {
+    setIsVisible(false);
+  };
+
+  const actionYes = () => {
+    setIsVisible(false);
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 1,
+        routes: [{name: 'Login'}],
+      }),
+    );
   };
 
   return (
@@ -62,11 +82,19 @@ export default function MyProfile() {
           <OptionMenu title="About" />
         </View>
         <View style={styles.containerLogout}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={callLogout}>
             <Text style={styles.labelLogout}>Logout</Text>
           </TouchableOpacity>
         </View>
       </View>
+      <CustomModalYesNo
+        isVisible={isVisible}
+        message="Deseja sair ?"
+        labelNo="Cancelar"
+        actionNo={actionNo}
+        labelYes="Sim"
+        actionYes={actionYes}
+      />
     </SafeAreaView>
   );
 }

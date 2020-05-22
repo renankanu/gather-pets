@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import LinearGradient from 'react-native-linear-gradient';
 import {sanFranciscoWeights} from 'react-native-typography';
 import * as Animatable from 'react-native-animatable';
 import {colors} from '../../styles/commons-styles';

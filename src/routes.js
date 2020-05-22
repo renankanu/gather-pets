@@ -70,8 +70,6 @@ export default function Routes() {
             headerMode="none"
             screenOptions={{
               cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-              useNativeDriver: true,
-              gestureEnabled: false,
             }}>
             <Stack.Screen name="InitialScreen" component={InitialScreen} />
             <Stack.Screen name="Login" component={Login} />
