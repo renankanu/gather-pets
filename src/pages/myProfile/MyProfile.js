@@ -56,6 +56,10 @@ export default function MyProfile() {
     navigation.navigate('ChangePassword');
   };
 
+  const callAbout = () => {
+    navigation.navigate('About');
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
@@ -90,7 +94,7 @@ export default function MyProfile() {
           <OptionMenu title="Notificações" action={callNotification} />
           <OptionMenu title="Meus Favoritos" action={callFavorite} />
           <OptionMenu title="Alterar Senha" action={callChangePassword} />
-          <OptionMenu title="Sobre" />
+          <OptionMenu title="Sobre" action={callAbout} />
         </View>
         <View style={styles.containerLogout}>
           <TouchableOpacity onPress={callLogout}>
