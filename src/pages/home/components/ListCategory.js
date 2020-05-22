@@ -17,10 +17,6 @@ export default function ListCategory() {
   const {animalsCategory} = useSelector((state) => state.animal);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log('Categories', animalsCategory);
-  }, [animalsCategory]);
-
   const selectCategory = (id) => {
     let newArrayCategory = animalsCategory.map((itemCategory) => {
       return itemCategory.id === id
@@ -40,10 +36,12 @@ export default function ListCategory() {
         horizontal
         renderItem={({item}) => {
           return (
-            <TouchableOpacity>
-              <Spacer value={4} />
+            <TouchableOpacity
+              onPress={() => {
+                selectCategory(item.id);
+              }}>
               <View style={styles.constainer}>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   onPress={() => {
                     selectCategory(item.id);
                   }}
@@ -57,8 +55,8 @@ export default function ListCategory() {
                     style={styles.image}
                     source={item.isSelected ? item.image : item.imageDisable}
                   />
-                </TouchableOpacity>
-                <Spacer value={6} />
+                </TouchableOpacity> */}
+                {/* <Spacer value={6} /> */}
                 <Text
                   style={[
                     styles.titleCategory,
@@ -68,6 +66,17 @@ export default function ListCategory() {
                   ]}>
                   {item.name}
                 </Text>
+                <Spacer value={10} />
+                {item.isSelected ? (
+                  <View style={styles.markerSelected} />
+                ) : (
+                  <View
+                    style={[
+                      styles.markerSelected,
+                      {backgroundColor: colors.white},
+                    ]}
+                  />
+                )}
               </View>
             </TouchableOpacity>
           );
@@ -108,5 +117,12 @@ const styles = StyleSheet.create({
   image: {
     width: 60,
     height: 60,
+  },
+  markerSelected: {
+    height: 4,
+    width: 60,
+    borderRadius: 40,
+    marginHorizontal: 6,
+    backgroundColor: colors.yellowHeader,
   },
 });
