@@ -67,7 +67,7 @@ export default function Home() {
               </TouchableOpacity>
               <Spacer value={8} />
               <TextInput
-                placeholder="Search pet for adaption"
+                placeholder="Buscar pet"
                 placeholderTextColor={colors.textPrimaryColor}
                 style={styles.placeholderSearch}
               />

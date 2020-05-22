@@ -91,37 +91,30 @@ export const all = [
 export const categories = [
   {
     id: 1,
-    name: 'All',
+    name: 'Todos',
     image: allAnimals,
     imageDisable: allDisable,
     isSelected: true,
   },
   {
     id: 2,
-    name: 'Dogs',
+    name: 'Cachorros',
     image: dog,
     imageDisable: dogDisable,
     isSelected: false,
   },
   {
     id: 3,
-    name: 'Cats',
+    name: 'Gatos',
     image: cat,
     imageDisable: catDisable,
     isSelected: false,
   },
   {
     id: 4,
-    name: 'Birds',
+    name: 'Pássaros',
     image: bird,
     imageDisable: birdDisable,
-    isSelected: false,
-  },
-  {
-    id: 5,
-    name: 'Reptile',
-    image: reptile,
-    imageDisable: reptileDisable,
     isSelected: false,
   },
 ];

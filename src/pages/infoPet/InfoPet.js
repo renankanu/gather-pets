@@ -65,11 +65,11 @@ export default function InfoPet({route}) {
         </View>
         <Spacer value={6} />
         <View style={styles.rowCardInfo}>
-          <Text style={styles.breed}>Mixed Breed</Text>
+          <Text style={styles.breed}>Raça misturada</Text>
           <View style={styles.rowCardInfo}>
             <Feather name="gift" size={16} color={colors.black} />
             <Spacer value={4} />
-            <Text style={styles.breed}>1 years old</Text>
+            <Text style={styles.breed}>1 ano</Text>
           </View>
         </View>
         <Spacer value={6} />
@@ -85,7 +85,7 @@ export default function InfoPet({route}) {
         <Spacer value={8} />
         <View>
           <Text style={styles.nameOwner}>Johna Mik</Text>
-          <Text style={styles.infoOwner}>Owner</Text>
+          <Text style={styles.infoOwner}>Dono</Text>
         </View>
       </View>
       <Spacer value={20} />
@@ -93,12 +93,13 @@ export default function InfoPet({route}) {
         <Text style={styles.titleInfo}>Pet Story</Text>
         <Spacer value={10} />
         <Text style={styles.descInfo}>
-          Tyson is a 1 year-old Husky/Malamute mix who has gone through collar
-          recall training. He is an active guy who needs the same in his forever
-          home. The sweet guy would love to go to the dog park, hiking, etc with
-          his new family. Tyson is ready to go and would love to be an active
-          member of your family. If you would like to meet Tyson, please contact
-          us to ensure he will be at our weekly Saturday adoptions.
+          Tyson é uma mistura de raça com 1 ano de idade que passou por uma
+          coleira recall de treinamento. Ele é um cara ativo que precisa do
+          mesmo para sempre casa. O cara doce adoraria ir ao parque de cães,
+          caminhadas, etc, com sua nova família. Tyson está pronto para ir e
+          adoraria ser um ativo membro da sua família. Se você gostaria de
+          conhecer a Tyson, entre em contato com para garantir que ele estará em
+          nossas adoções semanais aos sábados.
         </Text>
       </View>
       <Spacer value={20} />
@@ -112,7 +113,7 @@ export default function InfoPet({route}) {
         </TouchableOpacity>
         <Spacer value={20} />
         <TouchableOpacity style={styles.buttonAdoption}>
-          <Text style={styles.labelButton}>Adoption</Text>
+          <Text style={styles.labelButton}>Adotar</Text>
         </TouchableOpacity>
       </Animatable.View>
     </ScrollView>

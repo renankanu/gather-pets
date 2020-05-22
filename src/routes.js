@@ -9,6 +9,8 @@ import {
   HeaderStyleInterpolators,
 } from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
 import About from './pages/about/About';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
@@ -19,11 +21,10 @@ import MyProfile from './pages/myProfile/MyProfile';
 import Favorite from './pages/favorite/Favorite';
 import InitialScreen from './pages/login/InitialScreen';
 import Login from './pages/login/Login';
-import {Provider} from 'react-redux';
 import rootReducer from './store/modules/rootReducer';
-import {createStore} from 'redux';
 import InfoPet from './pages/infoPet/InfoPet';
 import Notification from './pages/notification/Notification';
+import ChangePassword from './pages/myProfile/ChangePassword';
 
 const Stack = createStackNavigator();
 const store = createStore(rootReducer);
@@ -86,6 +87,7 @@ export default function Routes() {
             <Stack.Screen name="MyProfile" component={MyProfile} />
             <Stack.Screen name="Notification" component={Notification} />
             <Stack.Screen name="Favorite" component={Favorite} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword} />
             <Stack.Screen name="About" component={About} />
           </Stack.Navigator>
         </NavigationContainer>
