@@ -39,6 +39,12 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Gather Pets gostaria de acessar sua galeria para criar fotos.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Gather Petsgostaria de acessar sua camera para criar sua fotos.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Gather Petsgostaria de acessar seu microfone para criar vídeos. (for videos)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

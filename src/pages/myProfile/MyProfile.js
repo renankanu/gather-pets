@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {human} from 'react-native-typography';
+import ImagePicker from 'react-native-image-crop-picker';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import {colors, commonsStyle} from '../../styles/commons-styles';
@@ -21,6 +22,7 @@ import CustomModalYesNo from '../../components/CustomModalYesNo';
 export default function MyProfile() {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(false);
+  const [imageProfile, setImageProfile] = useState('');
 
   const goBack = () => {
     navigation.goBack();
@@ -60,6 +62,17 @@ export default function MyProfile() {
     navigation.navigate('About');
   };
 
+  const callIntentPhoto = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then((image) => {
+      console.log(image.path);
+      setImageProfile(image.path);
+    });
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
@@ -72,12 +85,15 @@ export default function MyProfile() {
         </TouchableOpacity>
         <Spacer value={20} />
         <View style={styles.containePhoto}>
-          <View>
-            <Image style={styles.imageUser} source={user} />
+          <TouchableOpacity onPress={callIntentPhoto} activeOpacity={0.7}>
+            <Image
+              style={styles.imageUser}
+              source={imageProfile !== '' ? {uri: imageProfile} : user}
+            />
             <View style={styles.iconCam}>
               <Feather name="camera" size={18} color={colors.white} />
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
         <Spacer value={10} />
         <View style={styles.containerInfo}>
