@@ -162,6 +162,7 @@ export default function Chat() {
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <GiftedChat
         messages={messages}
+        locale="pt-br"
         user={{_id: 3, name: 'Renan 2'}}
         renderBubble={renderBubble}
         placeholder="Escreva uma mensagem.."

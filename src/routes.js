@@ -11,6 +11,7 @@ import {
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import About from './pages/about/About';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
@@ -26,9 +27,11 @@ import InfoPet from './pages/infoPet/InfoPet';
 import Notification from './pages/notification/Notification';
 import ChangePassword from './pages/myProfile/ChangePassword';
 import Chat from './pages/chat/Chat';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createStackNavigator();
 const store = createStore(rootReducer);
+const Tab = createBottomTabNavigator();
 
 export default function Routes() {
   console.disableYellowBox = true;
@@ -59,6 +62,47 @@ export default function Routes() {
     }),
   };
 
+  const HomeStackScreen = () => (
+    <Tab.Navigator
+      initialRouteName="Home"
+      activeColor="#36CA63"
+      inactiveColor="#fff"
+      shifting={true}
+      barStyle={{backgroundColor: '#293B83', paddingBottom: 12}}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({color}) => (
+            <FontAwesome name="home" color={color} size={26} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Delivery"
+        component={Login}
+        options={{
+          tabBarLabel: 'Doar',
+          tabBarIcon: ({color}) => (
+            <FontAwesome name="truck" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Notifications"
+        component={Notification}
+        options={{
+          tabBarLabel: 'Notificações',
+          tabBarIcon: ({color}) => (
+            <FontAwesome name="bell" color={color} size={26} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+
   return (
     <Provider store={store}>
       <SafeAreaProvider>
@@ -82,7 +126,7 @@ export default function Routes() {
               component={Register}
               options={{...transition}}
             />
-            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Home" component={HomeStackScreen} />
             <Stack.Screen name="InfoPet" component={InfoPet} />
             <Stack.Screen name="Chat" component={Chat} />
             <Stack.Screen name="Search" component={Search} />
