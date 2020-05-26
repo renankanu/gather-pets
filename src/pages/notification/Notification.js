@@ -5,9 +5,11 @@ import {
   StatusBar,
   StyleSheet,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
+import {useFocusEffect} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 
 import {colors, commonsStyle} from '../../styles/commons-styles';
@@ -16,6 +18,13 @@ import Spacer from '../../components/Spacer';
 
 export default function Notification() {
   const navigation = useNavigation();
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle('light-content');
+      Platform.OS === 'android' &&
+        StatusBar.setBackgroundColor(colors.backgroundAppColor);
+    }, []),
+  );
 
   const callGoBack = () => {
     navigation.goBack();

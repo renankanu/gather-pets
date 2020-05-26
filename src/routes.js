@@ -12,6 +12,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Feather from 'react-native-vector-icons/Feather';
 
 import About from './pages/about/About';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
@@ -75,7 +76,7 @@ export default function Routes() {
         options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({color}) => (
-            <FontAwesome name="home" color={color} size={26} />
+            <Feather name="home" color={color} size={22} />
           ),
         }}
       />
@@ -86,7 +87,17 @@ export default function Routes() {
         options={{
           tabBarLabel: 'Doar',
           tabBarIcon: ({color}) => (
-            <FontAwesome name="truck" color={color} size={26} />
+            <Feather name="plus-circle" color={color} size={22} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Chat"
+        component={Notification}
+        options={{
+          tabBarLabel: 'Chat',
+          tabBarIcon: ({color}) => (
+            <Feather name="message-square" color={color} size={22} />
           ),
         }}
       />
@@ -96,7 +107,7 @@ export default function Routes() {
         options={{
           tabBarLabel: 'Notificações',
           tabBarIcon: ({color}) => (
-            <FontAwesome name="bell" color={color} size={26} />
+            <Feather name="bell" color={color} size={22} />
           ),
         }}
       />
