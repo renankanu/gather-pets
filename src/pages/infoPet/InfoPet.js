@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
@@ -82,6 +82,8 @@ const options = Platform.select({
 export default function InfoPet({route}) {
   const {pet} = route.params;
   const navigation = useNavigation();
+  const [isLiked, setIsLiked] = useState(false);
+  const likeAnimationRef = useRef(null);
 
   const comeBack = () => {
     navigation.goBack();
@@ -95,6 +97,11 @@ export default function InfoPet({route}) {
       .catch((err) => {
         err && console.log(err);
       });
+  };
+
+  const likeDislike = () => {
+    likeAnimationRef.current.rubberBand();
+    setIsLiked(!isLiked);
   };
 
   return (
@@ -167,8 +174,14 @@ export default function InfoPet({route}) {
       </View>
       <Spacer value={20} />
       <Animatable.View animation="slideInUp" style={styles.containerActions}>
-        <TouchableOpacity style={styles.buttonLike}>
-          <Feather name="heart" size={16} color={colors.black} />
+        <TouchableOpacity style={styles.buttonLike} onPress={likeDislike}>
+          <Animatable.View ref={likeAnimationRef}>
+            {isLiked ? (
+              <FontAwesome name="heart" size={16} color={colors.tomato} />
+            ) : (
+              <Feather name="heart" size={16} color={colors.black} />
+            )}
+          </Animatable.View>
         </TouchableOpacity>
         <Spacer value={10} />
         <TouchableOpacity style={styles.buttonLike}>
