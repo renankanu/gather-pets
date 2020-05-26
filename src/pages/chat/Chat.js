@@ -6,14 +6,29 @@ import {
   Composer,
   InputToolbar,
 } from 'react-native-gifted-chat';
-import {ActivityIndicator, View, StyleSheet} from 'react-native';
+import {
+  ActivityIndicator,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import ImagePicker from 'react-native-image-crop-picker';
+
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import ChatConfig from '../../config/chat';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import ModalOptionPhoto from '../../components/ModalOptionPhoto';
+
+const configImagePicker = {
+  width: 300,
+  height: 400,
+  cropping: true,
+};
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
+  const [isModalPhotoVisible, setIsModalPhotoVisible] = useState(false);
 
   useEffect(() => {
     beginChat();
@@ -49,13 +64,22 @@ export default function Chat() {
     <Composer {...props} textInputStyle={styles.composer} />
   );
 
+  const openModalPhoto = () => {
+    setIsModalPhotoVisible(true);
+  };
+
   const renderSend = (props) => {
     return (
-      <Send {...props}>
-        <View style={styles.sendingContainer}>
-          <Feather name="send" size={24} color={colors.textPrimaryColor} />
-        </View>
-      </Send>
+      <View style={styles.containerSend}>
+        <TouchableOpacity onPress={openModalPhoto}>
+          <Feather name="camera" size={25} color={colors.textPrimaryColor} />
+        </TouchableOpacity>
+        <Send {...props}>
+          <View style={styles.sendingContainer}>
+            <Feather name="send" size={24} color={colors.textPrimaryColor} />
+          </View>
+        </Send>
+      </View>
     );
   };
 
@@ -87,6 +111,53 @@ export default function Chat() {
     />
   );
 
+  const callCamera = () => {
+    actionPhoto('camera');
+  };
+
+  const callGallery = () => {
+    actionPhoto('gallery');
+  };
+
+  const cancelAction = () => {
+    setIsModalPhotoVisible(false);
+  };
+
+  const uriToBlob = (uri) => {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+
+      xhr.onload = function () {
+        resolve(xhr.response);
+      };
+
+      xhr.onerror = function () {
+        reject(new Error('uriToBlob failed'));
+      };
+
+      xhr.responseType = 'blob';
+
+      xhr.open('GET', uri, true);
+      xhr.send(null);
+    });
+  };
+
+  const actionPhoto = async (typeAction) => {
+    const method =
+      typeAction === 'camera' ? ImagePicker.openCamera : ImagePicker.openPicker;
+
+    method(configImagePicker)
+      .then((image) => {
+        console.log(image.path);
+        ChatConfig.sendImageFirestoge(image.path);
+        setIsModalPhotoVisible(false);
+      })
+      .catch((error) => {
+        setIsModalPhotoVisible(false);
+        console.log('ImagePickerError: ', error);
+      });
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <GiftedChat
@@ -108,15 +179,25 @@ export default function Chat() {
           }
         }}
       />
+      <ModalOptionPhoto
+        isVisible={isModalPhotoVisible}
+        camera={callCamera}
+        gallery={callGallery}
+        cancel={cancelAction}
+      />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   sendingContainer: {
+    marginBottom: 9,
+    marginHorizontal: 16,
+  },
+  containerSend: {
     flexDirection: 'row',
-    marginHorizontal: 20,
-    marginBottom: 6,
+    marginLeft: 16,
+    alignItems: 'center',
   },
   bottomComponentContainer: {
     justifyContent: 'center',

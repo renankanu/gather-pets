@@ -22,6 +22,10 @@ class ChatConfig {
     this.refChat = firebaseDatabase.ref(`chats/${this.uid}`);
   }
 
+  sendImageFirestoge(image) {
+    console.log('-----', image)
+  }
+
   sendUpload(message) {
     this.messagesRef.push({
       isSystem: false,
