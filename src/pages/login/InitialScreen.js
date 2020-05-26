@@ -24,8 +24,7 @@ const InitialScreen = () => {
           <Animatable.View
             animation="slideInDown"
             style={styles.containerTitle}>
-            <Text style={styles.titleLogin}>Don't shop, adopt.</Text>
-            <Text style={styles.subTitleLogin}>Do not abandon, donate!</Text>
+            <Text style={styles.titleLogin}>Não abandone, doe!</Text>
           </Animatable.View>
           <Animatable.View
             animation="slideInUp"

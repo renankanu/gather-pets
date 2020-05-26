@@ -18,11 +18,19 @@ import fonts from '../../styles/fonts';
 import OptionMenu from './components/OptionMenu';
 import {useNavigation, CommonActions} from '@react-navigation/native';
 import CustomModalYesNo from '../../components/CustomModalYesNo';
+import ModalOptionPhoto from '../../components/ModalOptionPhoto';
+
+const configImagePicker = {
+  width: 300,
+  height: 400,
+  cropping: true,
+};
 
 export default function MyProfile() {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(false);
   const [imageProfile, setImageProfile] = useState('');
+  const [isModalPhotoVisible, setIsModalPhotoVisible] = useState(false);
 
   const goBack = () => {
     navigation.goBack();
@@ -62,15 +70,36 @@ export default function MyProfile() {
     navigation.navigate('About');
   };
 
-  const callIntentPhoto = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      cropping: true,
-    }).then((image) => {
-      console.log(image.path);
-      setImageProfile(image.path);
-    });
+  const openModalPhoto = () => {
+    setIsModalPhotoVisible(true);
+  };
+
+  const callCamera = () => {
+    actionPhoto('camera');
+  };
+
+  const callGallery = () => {
+    actionPhoto('gallery');
+  };
+
+  const cancelAction = () => {
+    setIsModalPhotoVisible(false);
+  };
+
+  const actionPhoto = async (typeAction) => {
+    const method =
+      typeAction === 'camera' ? ImagePicker.openCamera : ImagePicker.openPicker;
+
+    method(configImagePicker)
+      .then((image) => {
+        console.log(image.path);
+        setImageProfile(image.path);
+        setIsModalPhotoVisible(false);
+      })
+      .catch((error) => {
+        setIsModalPhotoVisible(false);
+        console.log('ImagePickerError: ', error);
+      });
   };
 
   return (
@@ -85,7 +114,7 @@ export default function MyProfile() {
         </TouchableOpacity>
         <Spacer value={20} />
         <View style={styles.containePhoto}>
-          <TouchableOpacity onPress={callIntentPhoto} activeOpacity={0.7}>
+          <TouchableOpacity onPress={openModalPhoto} activeOpacity={0.7}>
             <Image
               style={styles.imageUser}
               source={imageProfile !== '' ? {uri: imageProfile} : user}
@@ -125,6 +154,12 @@ export default function MyProfile() {
         actionNo={actionNo}
         labelYes="Sim"
         actionYes={actionYes}
+      />
+      <ModalOptionPhoto
+        isVisible={isModalPhotoVisible}
+        camera={callCamera}
+        gallery={callGallery}
+        cancel={cancelAction}
       />
     </SafeAreaView>
   );
