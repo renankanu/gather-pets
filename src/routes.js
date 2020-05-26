@@ -25,6 +25,7 @@ import rootReducer from './store/modules/rootReducer';
 import InfoPet from './pages/infoPet/InfoPet';
 import Notification from './pages/notification/Notification';
 import ChangePassword from './pages/myProfile/ChangePassword';
+import Chat from './pages/chat/Chat';
 
 const Stack = createStackNavigator();
 const store = createStore(rootReducer);
@@ -83,6 +84,7 @@ export default function Routes() {
             />
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="InfoPet" component={InfoPet} />
+            <Stack.Screen name="Chat" component={Chat} />
             <Stack.Screen name="Search" component={Search} />
             <Stack.Screen name="MyProfile" component={MyProfile} />
             <Stack.Screen name="Notification" component={Notification} />

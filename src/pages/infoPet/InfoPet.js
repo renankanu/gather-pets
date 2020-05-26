@@ -104,6 +104,10 @@ export default function InfoPet({route}) {
     setIsLiked(!isLiked);
   };
 
+  const callChat = () => {
+    navigation.navigate('Chat');
+  };
+
   return (
     <ScrollView style={styles.container}>
       <StatusBar
@@ -184,7 +188,7 @@ export default function InfoPet({route}) {
           </Animatable.View>
         </TouchableOpacity>
         <Spacer value={10} />
-        <TouchableOpacity style={styles.buttonLike}>
+        <TouchableOpacity style={styles.buttonLike} onPress={callChat}>
           <Feather name="message-circle" size={16} color={colors.black} />
         </TouchableOpacity>
         <Spacer value={20} />

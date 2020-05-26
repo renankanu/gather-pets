@@ -11,6 +11,7 @@ export const colors = {
   transparent: '#FFFFFF00',
   yellowHeader: '#FFC542',
   greenButton: '#3FDA9C',
+  bubble: '#3F889C',
   face: '#3b5998',
   google: '#DB4437',
   silver: '#C0C0C0',
