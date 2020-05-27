@@ -7,15 +7,25 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
+  Platform,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {useFocusEffect} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import {listChat} from '../../mocks';
 import Spacer from '../../components/Spacer';
-import {useNavigation} from '@react-navigation/native';
 
 export default function ListChat() {
   const nvigation = useNavigation();
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle('light-content');
+      Platform.OS === 'android' &&
+        StatusBar.setBackgroundColor(colors.backgroundAppColor);
+    }, []),
+  );
 
   const callChat = () => {
     nvigation.navigate('Chat');

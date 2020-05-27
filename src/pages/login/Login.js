@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   Platform,
+  Image,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Animatable from 'react-native-animatable';
@@ -17,6 +18,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {commonsStyle, colors} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 import fonts from '../../styles/fonts';
+import logo from '../../assets/images/logo.png';
+import logoW from '../../assets/images/logoWhite.png';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -43,10 +46,17 @@ const Login = () => {
         backgroundColor={colors.backgroundAppColor}
       />
       <View style={styles.container}>
-        <Animatable.View animation="slideInDown">
+        <Animatable.View
+          style={{alignItems: 'center'}}
+          duration={2000}
+          animation="bounceInDown">
+          <Image style={{width: 150, height: 150}} source={logoW} />
           <Text style={[styles.nameApp]}>Gather Pets</Text>
         </Animatable.View>
-        <Animatable.View animation="fadeIn" style={styles.cardLogin}>
+        <Animatable.View
+          duration={2000}
+          animation="bounceIn"
+          style={styles.cardLogin}>
           <View style={styles.containerInput}>
             <Feather
               style={styles.iconInput}
@@ -90,7 +100,7 @@ const Login = () => {
           </Text> */}
         </Animatable.View>
         <Spacer value={32} />
-        <Animatable.View animation="slideInUp">
+        <Animatable.View duration={2000} animation="bounceInUp">
           <View style={styles.orLogin}>
             <View style={styles.divider} />
             <Text style={styles.orSocialLabel}>
