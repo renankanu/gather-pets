@@ -110,7 +110,11 @@ export default function MyProfile() {
       />
       <View style={styles.container}>
         <TouchableOpacity onPress={goBack} style={styles.backButton}>
-          <Feather name="chevron-left" size={32} color={colors.white} />
+          <Feather
+            name="chevron-left"
+            size={32}
+            color={colors.textPrimaryColor}
+          />
         </TouchableOpacity>
         <Spacer value={20} />
         <View style={styles.containePhoto}>

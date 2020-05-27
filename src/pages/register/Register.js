@@ -37,7 +37,7 @@ export default function Register() {
         />
       </TouchableOpacity>
       <Spacer value={50} />
-      <Text style={styles.title}>Register</Text>
+      <Text style={styles.title}>Registrar</Text>
       <Spacer value={50} />
       <View style={styles.container}>
         <Animatable.View animation="fadeIn" style={styles.cardRegister}>
@@ -51,7 +51,7 @@ export default function Register() {
             <TextInput
               autoCorrect={false}
               autoCapitalize="none"
-              placeholder="Name"
+              placeholder="Nome"
               placeholderTextColor={colors.textPrimaryColor}
               style={styles.inputStyle}
             />
@@ -67,7 +67,7 @@ export default function Register() {
             <TextInput
               autoCorrect={false}
               autoCapitalize="none"
-              placeholder="Cell Phone"
+              placeholder="Celular"
               keyboardType="numeric"
               placeholderTextColor={colors.textPrimaryColor}
               style={styles.inputStyle}
@@ -103,7 +103,7 @@ export default function Register() {
               autoCorrect={false}
               secureTextEntry={true}
               autoCompleteType="password"
-              placeholder="Password"
+              placeholder="Senha"
               placeholderTextColor={colors.textPrimaryColor}
               style={styles.inputStyle}
             />
@@ -120,20 +120,21 @@ export default function Register() {
               autoCorrect={false}
               secureTextEntry={true}
               autoCompleteType="password"
-              placeholder="Repeat Password"
+              placeholder="Repetir Senha"
               placeholderTextColor={colors.textPrimaryColor}
               style={styles.inputStyle}
             />
           </View>
           <Spacer value={16} />
           <Text style={styles.terms}>
-            By pressing 'Register' you agree to our terms & condition
+            Ao pressionar 'Registrar', você concorda com nossos termos e
+            condições
           </Text>
         </Animatable.View>
         <Spacer value={32} />
         <TouchableOpacity style={styles.buttonRegister}>
           <Text style={[styles.labelRegister, commonsStyle.fontMedium]}>
-            Register
+            Registrar
           </Text>
         </TouchableOpacity>
       </View>

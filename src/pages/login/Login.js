@@ -85,14 +85,14 @@ const Login = () => {
               autoCorrect={false}
               secureTextEntry
               autoCompleteType="password"
-              placeholder="Password"
+              placeholder="Senha"
               placeholderTextColor={colors.textPrimaryColor}
               style={styles.inputStyle}
             />
           </View>
           <Spacer value={32} />
           <Text onPress={callRegister} style={styles.dontHave}>
-            Don't have account? Sign up now
+            Não tem conta? Inscreva-se agora
           </Text>
         </Animatable.View>
         <Spacer value={32} />
@@ -100,7 +100,7 @@ const Login = () => {
           <View style={styles.orLogin}>
             <View style={styles.divider} />
             <Text style={styles.orSocialLabel}>
-              Or login using social media
+              Ou entre usando uma mídia social
             </Text>
             <View style={styles.divider} />
           </View>
@@ -125,7 +125,7 @@ const Login = () => {
           <Spacer value={18} />
           <TouchableOpacity onPress={callHome} style={styles.buttonLogin}>
             <Text style={[styles.labelLogin, commonsStyle.fontMedium]}>
-              Login
+              Entrar
             </Text>
           </TouchableOpacity>
           <Spacer value={12} />
@@ -133,7 +133,7 @@ const Login = () => {
             onPress={() => {
               navigation.navigate('ForgotPassword');
             }}>
-            <Text style={[styles.labelForgot]}>Forgot password?</Text>
+            <Text style={[styles.labelForgot]}>Esqueceu a senha?</Text>
           </TouchableOpacity>
         </Animatable.View>
       </View>

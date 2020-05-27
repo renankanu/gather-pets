@@ -38,10 +38,11 @@ export default function ForgotPassword() {
       </TouchableOpacity>
       <View style={styles.container}>
         <Spacer value={100} />
-        <Text style={styles.title}>Forgot Password ?</Text>
+        <Text style={styles.title}>Esqueceu a Senha ?</Text>
         <Spacer value={100} />
         <Text style={styles.desc}>
-          Enter your registered email above to receivepassword reset instruction
+          Digite seu e-mail registrado acima para receber instruções de
+          redefinição de senha
         </Text>
         <Spacer value={42} />
         <View style={styles.containerInput}>
@@ -64,7 +65,7 @@ export default function ForgotPassword() {
         <Spacer value={16} />
         <TouchableOpacity style={styles.buttonForgot}>
           <Text style={[styles.labelForgot, commonsStyle.fontMedium]}>
-            Send
+            Enviar
           </Text>
         </TouchableOpacity>
       </View>
