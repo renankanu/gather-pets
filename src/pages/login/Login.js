@@ -47,11 +47,11 @@ const Login = () => {
       />
       <View style={styles.container}>
         <Animatable.View
-          style={{alignItems: 'center'}}
+          style={styles.containerTopLogo}
           duration={2000}
           animation="bounceInDown">
-          <Image style={{width: 150, height: 150}} source={logoW} />
-          <Text style={[styles.nameApp]}>Gather Pets</Text>
+          <Image style={styles.logo} source={logoW} />
+          <Text style={styles.nameApp}>Gather Pets</Text>
         </Animatable.View>
         <Animatable.View
           duration={2000}
@@ -145,11 +145,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   nameApp: {
-    fontFamily: fonts.BOLD,
+    fontFamily: fonts.LOGO,
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 32,
     marginBottom: 12,
-    color: colors.textPrimaryColor,
+    color: colors.white,
   },
   cardLogin: {
     marginHorizontal: 20,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   },
   orSocialLabel: {
     textAlign: 'center',
-    color: colors.textPrimaryColor,
+    color: colors.white,
   },
   iconInput: {
     paddingLeft: 14,
@@ -253,5 +253,12 @@ const styles = StyleSheet.create({
   terms: {
     marginHorizontal: 60,
     textAlign: 'center',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+  },
+  containerTopLogo: {
+    alignItems: 'center',
   },
 });
