@@ -37,7 +37,6 @@ import InfoPet from './pages/infoPet/InfoPet';
 import Notification from './pages/notification/Notification';
 import ChangePassword from './pages/myProfile/ChangePassword';
 import Chat from './pages/chat/Chat';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {colors} from './styles/commons-styles';
 import AddPet from './pages/addPet/AddPet';
 import ListChat from './pages/chat/ListChat';
@@ -95,7 +94,7 @@ export default function Routes() {
     const tabWidth = totalWidth / state.routes.length;
     return (
       <View style={[styles.tabContainer, {width: totalWidth}]}>
-        <View style={{flexDirection: 'row'}}>
+        <View style={styles.containerTabInternal}>
           <Animated.View
             style={[
               styles.slider,
@@ -115,6 +114,13 @@ export default function Routes() {
                 : route.name;
 
             const isFocused = state.index === index;
+            if (isFocused) {
+              Animated.spring(translateValue, {
+                toValue: index * tabWidth,
+                velocity: 10,
+                useNativeDriver: true,
+              }).start();
+            }
 
             const onPress = () => {
               const event = navigation.emit({
@@ -126,19 +132,6 @@ export default function Routes() {
               if (!isFocused && !event.defaultPrevented) {
                 navigation.navigate(route.name);
               }
-
-              Animated.spring(translateValue, {
-                toValue: index * tabWidth,
-                velocity: 10,
-                useNativeDriver: true,
-              }).start();
-            };
-
-            const onLongPress = () => {
-              navigation.emit({
-                type: 'tabLongPress',
-                target: route.key,
-              });
             };
 
             return (
@@ -148,8 +141,7 @@ export default function Routes() {
                 accessibilityLabel={options.tabBarAccessibilityLabel}
                 testID={options.tabBarTestID}
                 onPress={onPress}
-                onLongPress={onLongPress}
-                style={{flex: 1}}>
+                style={styles.touchTabBottom}>
                 <BottomMenuItem
                   iconName={label.toString()}
                   isCurrent={isFocused}
@@ -274,6 +266,12 @@ const styles = StyleSheet.create({
     elevation: 5,
     position: 'absolute',
     bottom: 0,
+  },
+  containerTabInternal: {
+    flexDirection: 'row',
+  },
+  touchTabBottom: {
+    flex: 1,
   },
   slider: {
     height: 5,
