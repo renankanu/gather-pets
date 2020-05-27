@@ -1,24 +1,23 @@
 import React from 'react';
 import {
-  View,
+  Image,
+  Platform,
+  StatusBar,
   StyleSheet,
   Text,
-  StatusBar,
   TextInput,
   TouchableOpacity,
-  Platform,
-  Image,
+  View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Animatable from 'react-native-animatable';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
-import {useFocusEffect} from '@react-navigation/native';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {commonsStyle, colors} from '../../styles/commons-styles';
+import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 import fonts from '../../styles/fonts';
-import logo from '../../assets/images/logo.png';
 import logoW from '../../assets/images/logoWhite.png';
 
 const Login = () => {
@@ -84,7 +83,7 @@ const Login = () => {
             />
             <TextInput
               autoCorrect={false}
-              secureTextEntry={true}
+              secureTextEntry
               autoCompleteType="password"
               placeholder="Password"
               placeholderTextColor={colors.textPrimaryColor}
@@ -95,9 +94,6 @@ const Login = () => {
           <Text onPress={callRegister} style={styles.dontHave}>
             Don't have account? Sign up now
           </Text>
-          {/* <Text style={styles.terms}>
-            By pressing 'Submit' you agree to our terms & condition
-          </Text> */}
         </Animatable.View>
         <Spacer value={32} />
         <Animatable.View duration={2000} animation="bounceInUp">
@@ -116,6 +112,10 @@ const Login = () => {
             <Spacer value={24} />
             <TouchableOpacity style={styles.buttonGoogle}>
               <FontAwesome name="google" size={24} color={colors.white} />
+            </TouchableOpacity>
+            <Spacer value={24} />
+            <TouchableOpacity style={styles.buttonApple}>
+              <FontAwesome name="apple" size={24} color={colors.black} />
             </TouchableOpacity>
           </View>
           <Spacer value={18} />
@@ -186,6 +186,14 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 48 / 2,
     backgroundColor: colors.google,
+  },
+  buttonApple: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 48,
+    height: 48,
+    borderRadius: 48 / 2,
+    backgroundColor: colors.white,
   },
   orLogin: {
     flexDirection: 'row',
