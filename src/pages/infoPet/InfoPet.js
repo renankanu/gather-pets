@@ -31,7 +31,6 @@ const options = Platform.select({
   ios: {
     activityItemSources: [
       {
-        // For sharing url with custom title.
         placeholderItem: {type: 'url', content: url},
         item: {
           default: {type: 'url', content: url},
@@ -42,19 +41,16 @@ const options = Platform.select({
         linkMetadata: {originalUrl: url, url, title},
       },
       {
-        // For sharing text.
         placeholderItem: {type: 'text', content: message},
         item: {
           default: {type: 'text', content: message},
-          message: null, // Specify no text to share via Messages app.
+          message: null,
         },
         linkMetadata: {
-          // For showing app icon on share preview.
           title: message,
         },
       },
       {
-        // For using custom icon instead of default text icon at share preview when sharing with message.
         placeholderItem: {
           type: 'url',
           content: icon,
@@ -135,20 +131,20 @@ export default function InfoPet({route}) {
       <Animatable.View animation="fadeIn" style={styles.cardInfo}>
         <View style={styles.rowCardInfo}>
           <Text style={styles.name}>Tyson</Text>
-          <FontAwesome name="venus" size={18} color={colors.black} />
+          <FontAwesome name="venus" size={18} color={colors.textPrimaryColor} />
         </View>
         <Spacer value={6} />
         <View style={styles.rowCardInfo}>
           <Text style={styles.breed}>Raça misturada</Text>
           <View style={styles.rowCardInfo}>
-            <Feather name="gift" size={16} color={colors.black} />
+            <Feather name="gift" size={16} color={colors.textPrimaryColor} />
             <Spacer value={4} />
             <Text style={styles.breed}>1 ano</Text>
           </View>
         </View>
         <Spacer value={6} />
         <View style={[styles.rowCardInfo, styles.infoAddress]}>
-          <Feather name="map-pin" size={16} color={colors.black} />
+          <Feather name="map-pin" size={16} color={colors.textPrimaryColor} />
           <Spacer value={4} />
           <Text style={styles.address}>Av. São José, Cianorte - PR</Text>
         </View>
@@ -183,13 +179,17 @@ export default function InfoPet({route}) {
             {isLiked ? (
               <FontAwesome name="heart" size={16} color={colors.tomato} />
             ) : (
-              <Feather name="heart" size={16} color={colors.black} />
+              <Feather name="heart" size={16} color={colors.textPrimaryColor} />
             )}
           </Animatable.View>
         </TouchableOpacity>
         <Spacer value={10} />
         <TouchableOpacity style={styles.buttonLike} onPress={callChat}>
-          <Feather name="message-circle" size={16} color={colors.black} />
+          <Feather
+            name="message-circle"
+            size={16}
+            color={colors.textPrimaryColor}
+          />
         </TouchableOpacity>
         <Spacer value={20} />
         <TouchableOpacity style={styles.buttonAdoption}>
@@ -203,6 +203,7 @@ export default function InfoPet({route}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.backgroundAppColor,
   },
   linearGradient: {
     position: 'absolute',
@@ -247,10 +248,10 @@ const styles = StyleSheet.create({
   cardInfo: {
     marginTop: -40,
     borderRadius: 20,
-    backgroundColor: colors.white,
+    backgroundColor: colors.secundaryColor,
     marginHorizontal: 20,
     padding: 20,
-    shadowColor: colors.black,
+    shadowColor: colors.primaryColor,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -267,10 +268,12 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: fonts.BOLD,
     fontSize: 18,
+    color: colors.textPrimaryColor,
   },
   breed: {
     fontFamily: fonts.MEDIUM,
     fontSize: 14,
+    color: colors.textPrimaryColor,
   },
   infoAddress: {
     justifyContent: null,
@@ -278,6 +281,7 @@ const styles = StyleSheet.create({
   address: {
     fontFamily: fonts.MEDIUM,
     fontSize: 16,
+    color: colors.textPrimaryColor,
   },
   containerOwner: {
     flexDirection: 'row',
@@ -292,20 +296,23 @@ const styles = StyleSheet.create({
   nameOwner: {
     fontFamily: fonts.BOLD,
     fontSize: 16,
+    color: colors.white,
   },
   infoOwner: {
     fontFamily: fonts.LIGHT,
-    color: colors.secundaryColor,
+    color: colors.textPrimaryColor,
   },
   containerInfo: {
     marginHorizontal: 10,
   },
   titleInfo: {
     ...sanFranciscoWeights.bold,
+    color: colors.white,
     fontSize: 18,
   },
   descInfo: {
     ...sanFranciscoWeights.ultraLight,
+    color: colors.textPrimaryColor,
   },
   containerActions: {
     marginHorizontal: 10,
@@ -318,7 +325,7 @@ const styles = StyleSheet.create({
     height: 38,
     borderRadius: 38 / 2,
     borderWidth: 1,
-    borderColor: colors.silver,
+    borderColor: colors.secundaryColor,
     justifyContent: 'center',
     alignItems: 'center',
   },
