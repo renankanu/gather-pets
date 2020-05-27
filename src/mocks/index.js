@@ -22,16 +22,22 @@ import rep1 from '../assets/images/rep1.jpeg';
 import rep2 from '../assets/images/rep2.jpeg';
 import rep3 from '../assets/images/rep3.jpeg';
 
+import listChat1 from '../assets/images/listChat1.jpeg';
+import listChat2 from '../assets/images/listChat2.jpeg';
+import listChat3 from '../assets/images/listChat3.jpeg';
+import listChat4 from '../assets/images/listChat4.jpeg';
+import listChat5 from '../assets/images/listChat5.jpeg';
+import listChat6 from '../assets/images/listChat6.jpeg';
+import listChat7 from '../assets/images/listChat7.jpeg';
+
 import allAnimals from '../assets/images/all.png';
 import dog from '../assets/images/dog.png';
 import cat from '../assets/images/cat.png';
 import bird from '../assets/images/bird.png';
-import reptile from '../assets/images/reptile.png';
 import allDisable from '../assets/images/allDisable.png';
 import dogDisable from '../assets/images/dogDisable.png';
 import catDisable from '../assets/images/catDisable.png';
 import birdDisable from '../assets/images/birdDisable.png';
-import reptileDisable from '../assets/images/reptileDisable.png';
 
 export const dogs = [
   {id: 1, name: 'Ted', years: '2 Years', photo: dog1},
@@ -116,5 +122,59 @@ export const categories = [
     image: bird,
     imageDisable: birdDisable,
     isSelected: false,
+  },
+];
+
+export const listChat = [
+  {
+    id: 1,
+    name: 'Angie',
+    lastMessage: 'Sim, as 09:00 pm',
+    image: listChat1,
+    time: '11:12 PM',
+    counterMessage: 2,
+  },
+  {
+    id: 2,
+    name: 'Donella M.',
+    lastMessage: 'Vamos combinar, depois as 18 horas eu estou livre',
+    image: listChat2,
+    time: '09:00 PM',
+    counterMessage: 11,
+  },
+  {
+    id: 3,
+    name: 'Nikolia',
+    lastMessage: 'Boa Noite!',
+    image: listChat3,
+    time: '07:12 PM',
+  },
+  {
+    id: 4,
+    name: 'Justyne',
+    lastMessage: 'Qual a idade do Tyson ?',
+    image: listChat4,
+    time: '06:10 PM',
+  },
+  {
+    id: 5,
+    name: 'Maurisa',
+    lastMessage: 'Olá, tudo bem ?',
+    image: listChat5,
+    time: '06:00 PM',
+  },
+  {
+    id: 6,
+    name: 'Norman',
+    lastMessage: 'Tenho um dog para doaçaão',
+    image: listChat6,
+    time: '05:23 PM',
+  },
+  {
+    id: 7,
+    name: 'Yaroslava',
+    lastMessage: 'Até depois',
+    image: listChat7,
+    time: '05:33 PM',
   },
 ];

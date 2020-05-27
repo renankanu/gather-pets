@@ -39,6 +39,8 @@ import ChangePassword from './pages/myProfile/ChangePassword';
 import Chat from './pages/chat/Chat';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {colors} from './styles/commons-styles';
+import AddPet from './pages/addPet/AddPet';
+import ListChat from './pages/chat/ListChat';
 
 const Stack = createStackNavigator();
 const store = createStore(rootReducer);
@@ -177,8 +179,8 @@ export default function Routes() {
         />
 
         <Tab.Screen
-          name="Delivery"
-          component={Login}
+          name="AddPet"
+          component={AddPet}
           options={{
             tabBarLabel: 'plus-circle',
             tabBarIcon: ({color}) => (
@@ -187,8 +189,8 @@ export default function Routes() {
           }}
         />
         <Tab.Screen
-          name="Chat"
-          component={Notification}
+          name="ListChat"
+          component={ListChat}
           options={{
             tabBarLabel: 'message-square',
             tabBarIcon: ({color}) => (
