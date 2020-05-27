@@ -114,6 +114,7 @@ export default function Routes() {
                 : route.name;
 
             const isFocused = state.index === index;
+
             if (isFocused) {
               Animated.spring(translateValue, {
                 toValue: index * tabWidth,

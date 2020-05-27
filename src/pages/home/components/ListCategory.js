@@ -1,16 +1,11 @@
-import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import * as Animatable from 'react-native-animatable';
+
 import {colors} from '../../../styles/commons-styles';
 import Spacer from '../../../components/Spacer';
 import fonts from '../../../styles/fonts';
-import {useDispatch, useSelector} from 'react-redux';
 import {updateAnimalCategories} from '../../../store/modules/animal/actions';
 
 export default function ListCategory() {
@@ -52,12 +47,15 @@ export default function ListCategory() {
                 </Text>
                 <Spacer value={10} />
                 {item.isSelected ? (
-                  <View style={styles.markerSelected} />
+                  <Animatable.View
+                    animation="pulse"
+                    style={styles.markerSelected}
+                  />
                 ) : (
                   <View
                     style={[
                       styles.markerSelected,
-                      {backgroundColor: colors.secundaryColor},
+                      {backgroundColor: colors.transparent},
                     ]}
                   />
                 )}
