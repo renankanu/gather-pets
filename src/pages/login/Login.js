@@ -113,10 +113,14 @@ const Login = () => {
             <TouchableOpacity style={styles.buttonGoogle}>
               <FontAwesome name="google" size={24} color={colors.white} />
             </TouchableOpacity>
-            <Spacer value={24} />
-            <TouchableOpacity style={styles.buttonApple}>
-              <FontAwesome name="apple" size={24} color={colors.black} />
-            </TouchableOpacity>
+            {Platform.OS === 'ios' && (
+              <>
+                <Spacer value={24} />
+                <TouchableOpacity style={styles.buttonApple}>
+                  <FontAwesome name="apple" size={24} color={colors.black} />
+                </TouchableOpacity>
+              </>
+            )}
           </View>
           <Spacer value={18} />
           <TouchableOpacity onPress={callHome} style={styles.buttonLogin}>
