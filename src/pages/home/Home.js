@@ -43,7 +43,7 @@ export default function Home() {
       <View style={styles.subContainer}>
         <SafeAreaView>
           <View style={styles.headerHome}>
-            <Spacer value={24} />
+            <Spacer value={26} />
             <View>
               <Text style={styles.labelLocation}>Location</Text>
               <View style={styles.locationContainer}>
@@ -59,12 +59,12 @@ export default function Home() {
             </TouchableOpacity>
           </View>
         </SafeAreaView>
-        <Spacer value={Platform.OS === 'ios' ? 0 : 32} />
+        <Spacer value={Platform.OS === 'ios' ? 0 : 16} />
         <View style={styles.containerContent}>
           <View style={styles.containerCategorySearch}>
-            <Spacer value={38} />
+            <Spacer value={24} />
             <ListCategory />
-            <Spacer value={38} />
+            <Spacer value={24} />
             <View style={styles.containerSearch}>
               <TouchableOpacity>
                 <Feather
@@ -80,7 +80,7 @@ export default function Home() {
                 style={styles.placeholderSearch}
               />
             </View>
-            <Spacer value={48} />
+            <Spacer value={36} />
           </View>
           <View style={styles.containerListAnimals}>
             <ListAnimals />
@@ -145,12 +145,12 @@ const styles = StyleSheet.create({
   },
   containerContent: {
     flex: 1,
-    backgroundColor: colors.bonJour,
+    backgroundColor: colors.backgroundAppColor,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
   },
   containerCategorySearch: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.secundaryColor,
     borderRadius: 40,
   },
   containerSearch: {

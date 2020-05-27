@@ -79,7 +79,9 @@ export default function Routes() {
         <Feather
           name={iconName}
           size={24}
-          style={{color: isCurrent ? colors.yellowHeader : colors.primaryColor}}
+          style={{
+            color: isCurrent ? colors.yellowHeader : colors.textPrimaryColor,
+          }}
         />
       </View>
     );
@@ -209,7 +211,7 @@ export default function Routes() {
         <View
           style={{
             height: useSafeArea().bottom - 5,
-            backgroundColor: colors.white,
+            backgroundColor: colors.secundaryColor,
           }}
         />
       )}
@@ -260,14 +262,14 @@ const styles = StyleSheet.create({
     height: 46,
     shadowOffset: {
       width: 0,
-      height: -1,
+      height: 2,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 4.0,
-    backgroundColor: 'white',
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    backgroundColor: colors.secundaryColor,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    elevation: 10,
+    elevation: 5,
     position: 'absolute',
     bottom: 0,
   },

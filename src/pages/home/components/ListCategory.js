@@ -41,27 +41,11 @@ export default function ListCategory() {
                 selectCategory(item.id);
               }}>
               <View style={styles.constainer}>
-                {/* <TouchableOpacity
-                  onPress={() => {
-                    selectCategory(item.id);
-                  }}
-                  style={[
-                    styles.containerCard,
-                    item.isSelected
-                      ? {backgroundColor: colors.yellowHeader}
-                      : {backgroundColor: colors.white},
-                  ]}>
-                  <Image
-                    style={styles.image}
-                    source={item.isSelected ? item.image : item.imageDisable}
-                  />
-                </TouchableOpacity> */}
-                {/* <Spacer value={6} /> */}
                 <Text
                   style={[
                     styles.titleCategory,
                     item.isSelected
-                      ? {color: colors.black}
+                      ? {color: colors.white}
                       : {color: colors.textPrimaryColor},
                   ]}>
                   {item.name}
@@ -73,7 +57,7 @@ export default function ListCategory() {
                   <View
                     style={[
                       styles.markerSelected,
-                      {backgroundColor: colors.white},
+                      {backgroundColor: colors.secundaryColor},
                     ]}
                   />
                 )}
