@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
   },
   containerFlatList: {
     marginHorizontal: 20,
+    paddingBottom: 46,
   },
   cardAnimal: {
     marginBottom: 24,

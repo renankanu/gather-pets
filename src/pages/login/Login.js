@@ -12,6 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import * as Animatable from 'react-native-animatable';
 import {useNavigation} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
+import {useFocusEffect} from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {commonsStyle, colors} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
@@ -19,6 +20,13 @@ import fonts from '../../styles/fonts';
 
 const Login = () => {
   const navigation = useNavigation();
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle('light-content');
+      Platform.OS === 'android' &&
+        StatusBar.setBackgroundColor(colors.backgroundAppColor);
+    }, []),
+  );
 
   const callRegister = () => {
     navigation.navigate('Register');
