@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import React, {useState} from 'react';
 import {
   View,
@@ -8,14 +9,12 @@ import {
   Platform,
   TouchableOpacity,
   Image,
-  ScrollView,
-  KeyboardAvoidingView,
 } from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import fonts from '../../styles/fonts';
@@ -30,7 +29,6 @@ const configImagePicker = {
 };
 
 export default function AddPet() {
-  const navigation = useNavigation();
   const [genderSelected, setGenderSelected] = useState(0);
   const [image, setImage] = useState('');
   const [isModalPhotoVisible, setIsModalPhotoVisible] = useState(false);
@@ -94,136 +92,132 @@ export default function AddPet() {
         <Text style={styles.headerTitle}>Adicionar Pet</Text>
       </View>
       <Spacer value={8} />
-      <ScrollView contentContainerStyle={styles.containerScroll}>
-        <KeyboardAvoidingView
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          style={{flex: 1}}>
-          <View style={styles.container}>
-            <View style={{flex: 1, alignItems: 'center'}}>
-              <TouchableOpacity
-                style={styles.containerPhoto}
-                onPress={openModalPhoto}>
-                {image === '' ? (
-                  <Feather
-                    style={styles.iconCam}
-                    name="camera"
-                    size={32}
-                    color={colors.textPrimaryColor}
-                  />
-                ) : (
-                  <Image style={styles.image} source={{uri: image}} />
-                )}
-              </TouchableOpacity>
-            </View>
-            <Spacer value={16} />
-            <View style={styles.containerInput}>
-              <TextInput
-                autoCorrect={false}
-                autoCapitalize="none"
-                placeholder="Nome"
-                placeholderTextColor={colors.textPrimaryColor}
-                style={
-                  Platform.OS === 'ios'
-                    ? styles.inputStyle
-                    : {paddingHorizontal: 12}
-                }
-              />
-            </View>
-            <Spacer value={16} />
-            <View style={styles.containerRow}>
-              <View style={[styles.containerInput, {width: '46%'}]}>
-                <TextInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  placeholder="Raça"
-                  placeholderTextColor={colors.textPrimaryColor}
-                  style={
-                    Platform.OS === 'ios'
-                      ? styles.inputStyle
-                      : {paddingHorizontal: 12}
-                  }
+      <KeyboardAwareScrollView contentContainerStyle={styles.containerScroll}>
+        <View style={styles.container}>
+          <View style={styles.containerChooseImage}>
+            <TouchableOpacity
+              style={styles.containerPhoto}
+              onPress={openModalPhoto}>
+              {image === '' ? (
+                <Feather
+                  style={styles.iconCam}
+                  name="camera"
+                  size={32}
+                  color={colors.textPrimaryColor}
                 />
-              </View>
-              <View style={[styles.containerInput, {width: '46%'}]}>
-                <TextInput
-                  autoCorrect={false}
-                  autoCapitalize="none"
-                  placeholder="Idade"
-                  placeholderTextColor={colors.textPrimaryColor}
-                  style={
-                    Platform.OS === 'ios'
-                      ? styles.inputStyle
-                      : {paddingHorizontal: 12}
-                  }
-                />
-              </View>
-            </View>
-            <Spacer value={16} />
-            <View style={styles.containerInput}>
-              <TextInput
-                autoCorrect={false}
-                autoCapitalize="none"
-                placeholder="Endereço"
-                placeholderTextColor={colors.textPrimaryColor}
-                style={
-                  Platform.OS === 'ios'
-                    ? styles.inputStyle
-                    : {paddingHorizontal: 12}
-                }
-              />
-            </View>
-            <Spacer value={16} />
-            <Text style={styles.gender}>Gênero</Text>
-            <Spacer value={8} />
-            <View style={styles.containerRow}>
-              <TouchableOpacity
-                style={[
-                  styles.buttonGenderSelected,
-                  genderSelected !== 0 && {
-                    borderColor: colors.textPrimaryColor,
-                  },
-                ]}
-                onPress={selectMale}>
-                <Text
-                  style={[
-                    styles.labelGenderSelected,
-                    genderSelected !== 0 && {color: colors.textPrimaryColor},
-                  ]}>
-                  Macho
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  styles.buttonGenderSelected,
-                  genderSelected !== 1 && {
-                    borderColor: colors.textPrimaryColor,
-                  },
-                ]}
-                onPress={selectFemale}>
-                <Text
-                  style={[
-                    styles.labelGenderSelected,
-                    genderSelected !== 1 && {color: colors.textPrimaryColor},
-                  ]}>
-                  Fêmea
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <Spacer value={16} />
-            <Text style={styles.gender}>Conte um pouco sobre o pet</Text>
-            <Spacer value={8} />
-            <TextInput
-              multiline={true}
-              numberOfLines={10}
-              style={styles.textArea}
-            />
-            <Spacer value={16} />
-            <TouchableOpacity style={styles.buttonSave}>
-              <Text style={styles.labelSave}>Salvar</Text>
+              ) : (
+                <Image style={styles.image} source={{uri: image}} />
+              )}
             </TouchableOpacity>
           </View>
-        </KeyboardAvoidingView>
-      </ScrollView>
+          <Spacer value={16} />
+          <View style={styles.containerInput}>
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize="none"
+              placeholder="Nome"
+              placeholderTextColor={colors.textPrimaryColor}
+              style={
+                Platform.OS === 'ios'
+                  ? styles.inputStyle
+                  : styles.paddingInputAndroid
+              }
+            />
+          </View>
+          <Spacer value={16} />
+          <View style={styles.containerRow}>
+            <View style={[styles.containerInput, styles.col]}>
+              <TextInput
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Raça"
+                placeholderTextColor={colors.textPrimaryColor}
+                style={
+                  Platform.OS === 'ios'
+                    ? styles.inputStyle
+                    : styles.paddingInputAndroid
+                }
+              />
+            </View>
+            <View style={[styles.containerInput, styles.col]}>
+              <TextInput
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Idade"
+                placeholderTextColor={colors.textPrimaryColor}
+                style={
+                  Platform.OS === 'ios'
+                    ? styles.inputStyle
+                    : styles.paddingInputAndroid
+                }
+              />
+            </View>
+          </View>
+          <Spacer value={16} />
+          <View style={styles.containerInput}>
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize="none"
+              placeholder="Endereço"
+              placeholderTextColor={colors.textPrimaryColor}
+              style={
+                Platform.OS === 'ios'
+                  ? styles.inputStyle
+                  : styles.paddingInputAndroid
+              }
+            />
+          </View>
+          <Spacer value={16} />
+          <Text style={styles.gender}>Gênero</Text>
+          <Spacer value={8} />
+          <View style={styles.containerRow}>
+            <TouchableOpacity
+              style={[
+                styles.buttonGenderSelected,
+                genderSelected !== 0 && {
+                  borderColor: colors.textPrimaryColor,
+                },
+              ]}
+              onPress={selectMale}>
+              <Text
+                style={[
+                  styles.labelGenderSelected,
+                  genderSelected !== 0 && {color: colors.textPrimaryColor},
+                ]}>
+                Macho
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.buttonGenderSelected,
+                genderSelected !== 1 && {
+                  borderColor: colors.textPrimaryColor,
+                },
+              ]}
+              onPress={selectFemale}>
+              <Text
+                style={[
+                  styles.labelGenderSelected,
+                  genderSelected !== 1 && {color: colors.textPrimaryColor},
+                ]}>
+                Fêmea
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <Spacer value={16} />
+          <Text style={styles.gender}>Conte um pouco sobre o pet</Text>
+          <Spacer value={8} />
+          <TextInput
+            multiline={true}
+            numberOfLines={10}
+            style={styles.textArea}
+          />
+          <Spacer value={16} />
+          <TouchableOpacity style={styles.buttonSave}>
+            <Text style={styles.labelSave}>Salvar</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAwareScrollView>
       <ModalOptionPhoto
         isVisible={isModalPhotoVisible}
         camera={callCamera}
@@ -257,6 +251,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal: 20,
+  },
+  paddingInputAndroid: {
+    paddingHorizontal: 12,
+  },
+  containerKeyboarding: {
+    flex: 1,
+  },
+  containerChooseImage: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  col: {
+    width: '46%',
   },
   backButton: {
     padding: 10,
