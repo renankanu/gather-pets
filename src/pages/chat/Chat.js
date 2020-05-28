@@ -153,7 +153,7 @@ export default function Chat() {
 
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
-      <View style={styles.header}>
+      <View style={styles.containerHeader}>
         <TouchableOpacity onPress={callGoBack}>
           <Feather name="chevron-left" size={25} color={colors.white} />
         </TouchableOpacity>
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   inputToolbarPrimary: {
     alignItems: 'center',
   },
-  header: {
+  containerHeader: {
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
