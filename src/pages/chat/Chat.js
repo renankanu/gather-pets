@@ -11,6 +11,9 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  Image,
+  Text,
+  Dimensions,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -18,7 +21,11 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import ChatConfig from '../../config/chat';
+import listChat1 from '../../assets/images/listChat1.jpeg';
 import ModalOptionPhoto from '../../components/ModalOptionPhoto';
+import Spacer from '../../components/Spacer';
+import fonts from '../../styles/fonts';
+import {useNavigation} from '@react-navigation/native';
 
 const configImagePicker = {
   width: 300,
@@ -27,6 +34,7 @@ const configImagePicker = {
 };
 
 export default function Chat() {
+  const navigation = useNavigation();
   const [messages, setMessages] = useState([]);
   const [isModalPhotoVisible, setIsModalPhotoVisible] = useState(false);
 
@@ -123,25 +131,6 @@ export default function Chat() {
     setIsModalPhotoVisible(false);
   };
 
-  const uriToBlob = (uri) => {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-
-      xhr.onload = function () {
-        resolve(xhr.response);
-      };
-
-      xhr.onerror = function () {
-        reject(new Error('uriToBlob failed'));
-      };
-
-      xhr.responseType = 'blob';
-
-      xhr.open('GET', uri, true);
-      xhr.send(null);
-    });
-  };
-
   const actionPhoto = async (typeAction) => {
     const method =
       typeAction === 'camera' ? ImagePicker.openCamera : ImagePicker.openPicker;
@@ -158,8 +147,21 @@ export default function Chat() {
       });
   };
 
+  const callGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={callGoBack}>
+          <Feather name="chevron-left" size={25} color={colors.white} />
+        </TouchableOpacity>
+        <Spacer value={12} />
+        <Image style={styles.imgProfile} source={listChat1} />
+        <Spacer value={12} />
+        <Text style={styles.nameProfile}>Angie</Text>
+      </View>
       <GiftedChat
         messages={messages}
         locale="pt-br"
@@ -221,5 +223,23 @@ const styles = StyleSheet.create({
     backgroundColor: colors.transparent,
     paddingTop: 6,
   },
-  inputToolbarPrimary: {alignItems: 'center'},
+  inputToolbarPrimary: {
+    alignItems: 'center',
+  },
+  header: {
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 20,
+  },
+  imgProfile: {
+    height: 44,
+    width: 44,
+    borderRadius: 44 / 2,
+  },
+  nameProfile: {
+    fontFamily: fonts.BOLD,
+    fontSize: 16,
+    color: colors.white,
+  },
 });
