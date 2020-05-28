@@ -16,9 +16,10 @@ import {useNavigation} from '@react-navigation/native';
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import {listChat} from '../../mocks';
 import Spacer from '../../components/Spacer';
+import fonts from '../../styles/fonts';
 
 export default function ListChat() {
-  const nvigation = useNavigation();
+  const navigation = useNavigation();
   useFocusEffect(
     React.useCallback(() => {
       StatusBar.setBarStyle('light-content');
@@ -28,7 +29,7 @@ export default function ListChat() {
   );
 
   const callChat = () => {
-    nvigation.navigate('Chat');
+    navigation.navigate('Chat');
   };
 
   return (
@@ -37,6 +38,11 @@ export default function ListChat() {
         barStyle="light-content"
         backgroundColor={colors.backgroundAppColor}
       />
+      <Spacer value={8} />
+      <View style={styles.containerHeader}>
+        <Text style={styles.headerTitle}>Conversas</Text>
+      </View>
+      <Spacer value={8} />
       <View style={styles.container}>
         <FlatList
           data={listChat}
@@ -47,7 +53,7 @@ export default function ListChat() {
                   <Spacer value={16} />
                   <Image style={styles.imagePerfilChat} source={item.image} />
                   <Spacer value={16} />
-                  <View style={{flex: 1}}>
+                  <View style={styles.containerNameLastMessage}>
                     <Text numberOfLines={1} style={styles.name}>
                       {item.name}
                     </Text>
@@ -91,12 +97,26 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingVertical: 10,
   },
+  containerHeader: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  headerTitle: {
+    fontFamily: fonts.BOLD,
+    fontSize: 24,
+    color: colors.textPrimaryColor,
+  },
   name: {
     fontSize: 16,
     color: colors.white,
   },
   lastMessage: {
     color: colors.textPrimaryColor,
+  },
+  containerNameLastMessage: {
+    flex: 1,
   },
   time: {
     fontSize: 12,
