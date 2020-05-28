@@ -15,15 +15,24 @@ import {useFocusEffect} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
+import ImagePicker from 'react-native-image-crop-picker';
 
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import fonts from '../../styles/fonts';
 import Spacer from '../../components/Spacer';
+import ModalOptionPhoto from '../../components/ModalOptionPhoto';
+
+const configImagePicker = {
+  width: 300,
+  height: 400,
+  cropping: true,
+};
 
 export default function AddPet() {
   const navigation = useNavigation();
   const [genderSelected, setGenderSelected] = useState(0);
   const [image, setImage] = useState('');
+  const [isModalPhotoVisible, setIsModalPhotoVisible] = useState(false);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -43,6 +52,38 @@ export default function AddPet() {
 
   const selectFemale = () => {
     setGenderSelected(1);
+  };
+
+  const openModalPhoto = () => {
+    setIsModalPhotoVisible(true);
+  };
+
+  const callCamera = () => {
+    actionPhoto('camera');
+  };
+
+  const callGallery = () => {
+    actionPhoto('gallery');
+  };
+
+  const cancelAction = () => {
+    setIsModalPhotoVisible(false);
+  };
+
+  const actionPhoto = async (typeAction) => {
+    const method =
+      typeAction === 'camera' ? ImagePicker.openCamera : ImagePicker.openPicker;
+
+    method(configImagePicker)
+      .then((image) => {
+        console.log(image.path);
+        setImage(image.path);
+        setIsModalPhotoVisible(false);
+      })
+      .catch((error) => {
+        setIsModalPhotoVisible(false);
+        console.log('ImagePickerError: ', error);
+      });
   };
 
   return (
@@ -66,8 +107,13 @@ export default function AddPet() {
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={{flex: 1}}>
           <View style={styles.container}>
-            <TouchableOpacity style={styles.containerPhoto}>
-              <Image source={image !== '' && image} />
+            <TouchableOpacity
+              style={styles.containerPhoto}
+              onPress={openModalPhoto}>
+              <Image
+                style={[styles.containerPhoto, {resizeMode: 'cover'}]}
+                source={image !== '' && {uri: image}}
+              />
               {image === '' && (
                 <Feather
                   style={styles.iconCam}
@@ -168,6 +214,12 @@ export default function AddPet() {
           </View>
         </KeyboardAvoidingView>
       </ScrollView>
+      <ModalOptionPhoto
+        isVisible={isModalPhotoVisible}
+        camera={callCamera}
+        gallery={callGallery}
+        cancel={cancelAction}
+      />
     </SafeAreaView>
   );
 }
