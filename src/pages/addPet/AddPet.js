@@ -23,8 +23,9 @@ import Spacer from '../../components/Spacer';
 import ModalOptionPhoto from '../../components/ModalOptionPhoto';
 
 const configImagePicker = {
-  width: 300,
-  height: 400,
+  mediaType: 'photo',
+  width: 140,
+  height: 220,
   cropping: true,
 };
 
@@ -107,22 +108,22 @@ export default function AddPet() {
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={{flex: 1}}>
           <View style={styles.container}>
-            <TouchableOpacity
-              style={styles.containerPhoto}
-              onPress={openModalPhoto}>
-              <Image
-                style={[styles.containerPhoto, {resizeMode: 'cover'}]}
-                source={image !== '' && {uri: image}}
-              />
-              {image === '' && (
-                <Feather
-                  style={styles.iconCam}
-                  name="camera"
-                  size={32}
-                  color={colors.textPrimaryColor}
-                />
-              )}
-            </TouchableOpacity>
+            <View style={{flex: 1, alignItems: 'center'}}>
+              <TouchableOpacity
+                style={styles.containerPhoto}
+                onPress={openModalPhoto}>
+                {image === '' ? (
+                  <Feather
+                    style={styles.iconCam}
+                    name="camera"
+                    size={32}
+                    color={colors.textPrimaryColor}
+                  />
+                ) : (
+                  <Image style={styles.image} source={{uri: image}} />
+                )}
+              </TouchableOpacity>
+            </View>
             <Spacer value={16} />
             <View style={styles.containerInput}>
               <TextInput
@@ -246,12 +247,18 @@ const styles = StyleSheet.create({
     fontFamily: fonts.BOLD,
   },
   containerPhoto: {
-    width: '100%',
-    height: 240,
-    borderRadius: 120 / 2,
+    width: 140,
+    height: 220,
+    borderRadius: 20,
     backgroundColor: colors.secundaryColor,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: 140,
+    height: 220,
+    borderRadius: 20,
+    resizeMode: 'cover',
   },
   containerInput: {
     flexDirection: 'row',
