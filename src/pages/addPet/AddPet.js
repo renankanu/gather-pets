@@ -8,6 +8,8 @@ import {
   Platform,
   TouchableOpacity,
   Image,
+  ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import Feather from 'react-native-vector-icons/Feather';
@@ -59,99 +61,113 @@ export default function AddPet() {
         </TouchableOpacity>
         <Text style={styles.title}>Adicionar animal</Text>
       </View>
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.containerPhoto}>
-          <Image source={image !== '' && image} />
-          {image === '' && (
-            <Feather
-              style={styles.iconCam}
-              name="camera"
-              size={32}
-              color={colors.textPrimaryColor}
-            />
-          )}
-        </TouchableOpacity>
-        <Spacer value={16} />
-        <View style={styles.containerInput}>
-          <TextInput
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Nome"
-            placeholderTextColor={colors.textPrimaryColor}
-            style={Platform.OS === 'ios' ? styles.inputStyle : null}
-          />
-        </View>
-        <Spacer value={16} />
-        <View style={styles.containerRow}>
-          <View style={[styles.containerInput, {width: '46%'}]}>
+      <ScrollView contentContainerStyle={styles.containerScroll}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={{flex: 1}}>
+          <View style={styles.container}>
+            <TouchableOpacity style={styles.containerPhoto}>
+              <Image source={image !== '' && image} />
+              {image === '' && (
+                <Feather
+                  style={styles.iconCam}
+                  name="camera"
+                  size={32}
+                  color={colors.textPrimaryColor}
+                />
+              )}
+            </TouchableOpacity>
+            <Spacer value={16} />
+            <View style={styles.containerInput}>
+              <TextInput
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Nome"
+                placeholderTextColor={colors.textPrimaryColor}
+                style={Platform.OS === 'ios' ? styles.inputStyle : null}
+              />
+            </View>
+            <Spacer value={16} />
+            <View style={styles.containerRow}>
+              <View style={[styles.containerInput, {width: '46%'}]}>
+                <TextInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  placeholder="Raça"
+                  placeholderTextColor={colors.textPrimaryColor}
+                  style={Platform.OS === 'ios' ? styles.inputStyle : null}
+                />
+              </View>
+              <View style={[styles.containerInput, {width: '46%'}]}>
+                <TextInput
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  placeholder="Idade"
+                  placeholderTextColor={colors.textPrimaryColor}
+                  style={Platform.OS === 'ios' ? styles.inputStyle : null}
+                />
+              </View>
+            </View>
+            <Spacer value={16} />
+            <View style={styles.containerInput}>
+              <TextInput
+                autoCorrect={false}
+                autoCapitalize="none"
+                placeholder="Endereço"
+                placeholderTextColor={colors.textPrimaryColor}
+                style={Platform.OS === 'ios' ? styles.inputStyle : null}
+              />
+            </View>
+            <Spacer value={16} />
+            <Text style={styles.gender}>Sexo</Text>
+            <View style={styles.containerRow}>
+              <TouchableOpacity
+                style={[
+                  styles.buttonGenderSelected,
+                  genderSelected !== 0 && {
+                    borderColor: colors.textPrimaryColor,
+                  },
+                ]}
+                onPress={selectMale}>
+                <Text
+                  style={[
+                    styles.labelGenderSelected,
+                    genderSelected !== 0 && {color: colors.textPrimaryColor},
+                  ]}>
+                  Macho
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[
+                  styles.buttonGenderSelected,
+                  genderSelected !== 1 && {
+                    borderColor: colors.textPrimaryColor,
+                  },
+                ]}
+                onPress={selectFemale}>
+                <Text
+                  style={[
+                    styles.labelGenderSelected,
+                    genderSelected !== 1 && {color: colors.textPrimaryColor},
+                  ]}>
+                  Fêmea
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <Spacer value={16} />
+            <Text style={styles.gender}>Conte um pouco sobre o pet</Text>
             <TextInput
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="Raça"
-              placeholderTextColor={colors.textPrimaryColor}
-              style={Platform.OS === 'ios' ? styles.inputStyle : null}
+              multiline={true}
+              numberOfLines={10}
+              style={styles.textArea}
             />
+            <Spacer value={16} />
+            <TouchableOpacity style={styles.buttonSave}>
+              <Text style={styles.labelSave}>Salvar</Text>
+            </TouchableOpacity>
           </View>
-          <View style={[styles.containerInput, {width: '46%'}]}>
-            <TextInput
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="Idade"
-              placeholderTextColor={colors.textPrimaryColor}
-              style={Platform.OS === 'ios' ? styles.inputStyle : null}
-            />
-          </View>
-        </View>
-        <Spacer value={16} />
-        <View style={styles.containerInput}>
-          <TextInput
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Endereço"
-            placeholderTextColor={colors.textPrimaryColor}
-            style={Platform.OS === 'ios' ? styles.inputStyle : null}
-          />
-        </View>
-        <Spacer value={16} />
-        <Text style={styles.gender}>Sexo</Text>
-        <View style={styles.containerRow}>
-          <TouchableOpacity
-            style={[
-              styles.buttonGenderSelected,
-              genderSelected !== 0 && {borderColor: colors.textPrimaryColor},
-            ]}
-            onPress={selectMale}>
-            <Text
-              style={[
-                styles.labelGenderSelected,
-                genderSelected !== 0 && {color: colors.textPrimaryColor},
-              ]}>
-              Macho
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.buttonGenderSelected,
-              genderSelected !== 1 && {borderColor: colors.textPrimaryColor},
-            ]}
-            onPress={selectFemale}>
-            <Text
-              style={[
-                styles.labelGenderSelected,
-                genderSelected !== 1 && {color: colors.textPrimaryColor},
-              ]}>
-              Fêmea
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <Spacer value={16} />
-        <Text style={styles.gender}>Conte um pouco sobre o pet</Text>
-        <TextInput
-          multiline={true}
-          numberOfLines={10}
-          style={styles.textArea}
-        />
-      </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -226,7 +242,23 @@ const styles = StyleSheet.create({
     height: 200,
     textAlignVertical: 'top',
     padding: 20,
+    color: colors.white,
     backgroundColor: colors.secundaryColor,
     borderRadius: 10,
+  },
+  containerScroll: {
+    paddingBottom: 60,
+  },
+  buttonSave: {
+    height: 46,
+    backgroundColor: colors.yellowHeader,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  labelSave: {
+    fontFamily: fonts.BOLD,
+    fontSize: 14,
+    color: colors.primaryColor,
   },
 });
