@@ -85,6 +85,8 @@ target 'gather_pets' do
 
   pod 'RNShare', :path => '../node_modules/react-native-share'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'gather_petsTests' do
     inherit! :complete
     # Pods for testing
