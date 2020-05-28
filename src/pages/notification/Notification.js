@@ -37,7 +37,7 @@ export default function Notification() {
         backgroundColor={colors.backgroundAppColor}
       />
       <View style={styles.container}>
-        <Spacer value={20} />
+        <Spacer value={8} />
         <View style={styles.containerHeader}>
           <Text style={styles.headerTitle}>Notificações</Text>
           <TouchableOpacity onPress={callGoBack}>

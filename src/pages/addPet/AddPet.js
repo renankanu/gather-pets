@@ -43,10 +43,6 @@ export default function AddPet() {
     }, []),
   );
 
-  const comeBack = () => {
-    navigation.goBack();
-  };
-
   const selectMale = () => {
     setGenderSelected(0);
   };
@@ -93,16 +89,11 @@ export default function AddPet() {
         barStyle="light-content"
         backgroundColor={colors.backgroundAppColor}
       />
-      <View style={styles.header}>
-        <TouchableOpacity onPress={comeBack} style={styles.backButton}>
-          <Feather
-            name="chevron-left"
-            size={32}
-            color={colors.textPrimaryColor}
-          />
-        </TouchableOpacity>
-        <Text style={styles.title}>Adicionar animal</Text>
+      <Spacer value={8} />
+      <View style={styles.containerHeader}>
+        <Text style={styles.headerTitle}>Adicionar Pet</Text>
       </View>
+      <Spacer value={8} />
       <ScrollView contentContainerStyle={styles.containerScroll}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -131,7 +122,11 @@ export default function AddPet() {
                 autoCapitalize="none"
                 placeholder="Nome"
                 placeholderTextColor={colors.textPrimaryColor}
-                style={Platform.OS === 'ios' ? styles.inputStyle : null}
+                style={
+                  Platform.OS === 'ios'
+                    ? styles.inputStyle
+                    : {paddingHorizontal: 12}
+                }
               />
             </View>
             <Spacer value={16} />
@@ -142,7 +137,11 @@ export default function AddPet() {
                   autoCapitalize="none"
                   placeholder="Raça"
                   placeholderTextColor={colors.textPrimaryColor}
-                  style={Platform.OS === 'ios' ? styles.inputStyle : null}
+                  style={
+                    Platform.OS === 'ios'
+                      ? styles.inputStyle
+                      : {paddingHorizontal: 12}
+                  }
                 />
               </View>
               <View style={[styles.containerInput, {width: '46%'}]}>
@@ -151,7 +150,11 @@ export default function AddPet() {
                   autoCapitalize="none"
                   placeholder="Idade"
                   placeholderTextColor={colors.textPrimaryColor}
-                  style={Platform.OS === 'ios' ? styles.inputStyle : null}
+                  style={
+                    Platform.OS === 'ios'
+                      ? styles.inputStyle
+                      : {paddingHorizontal: 12}
+                  }
                 />
               </View>
             </View>
@@ -162,11 +165,16 @@ export default function AddPet() {
                 autoCapitalize="none"
                 placeholder="Endereço"
                 placeholderTextColor={colors.textPrimaryColor}
-                style={Platform.OS === 'ios' ? styles.inputStyle : null}
+                style={
+                  Platform.OS === 'ios'
+                    ? styles.inputStyle
+                    : {paddingHorizontal: 12}
+                }
               />
             </View>
             <Spacer value={16} />
-            <Text style={styles.gender}>Sexo</Text>
+            <Text style={styles.gender}>Gênero</Text>
+            <Spacer value={8} />
             <View style={styles.containerRow}>
               <TouchableOpacity
                 style={[
@@ -203,6 +211,7 @@ export default function AddPet() {
             </View>
             <Spacer value={16} />
             <Text style={styles.gender}>Conte um pouco sobre o pet</Text>
+            <Spacer value={8} />
             <TextInput
               multiline={true}
               numberOfLines={10}
@@ -229,6 +238,17 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  containerHeader: {
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  headerTitle: {
+    fontFamily: fonts.BOLD,
+    fontSize: 24,
+    color: colors.textPrimaryColor,
   },
   iconCam: {
     position: 'absolute',
