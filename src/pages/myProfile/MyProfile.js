@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import {human} from 'react-native-typography';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -16,7 +17,11 @@ import Spacer from '../../components/Spacer';
 import user from '../../assets/images/user.jpeg';
 import fonts from '../../styles/fonts';
 import OptionMenu from './components/OptionMenu';
-import {useNavigation, CommonActions} from '@react-navigation/native';
+import {
+  useNavigation,
+  CommonActions,
+  useFocusEffect,
+} from '@react-navigation/native';
 import CustomModalYesNo from '../../components/CustomModalYesNo';
 import ModalOptionPhoto from '../../components/ModalOptionPhoto';
 
@@ -31,6 +36,14 @@ export default function MyProfile() {
   const [isVisible, setIsVisible] = useState(false);
   const [imageProfile, setImageProfile] = useState('');
   const [isModalPhotoVisible, setIsModalPhotoVisible] = useState(false);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle('light-content');
+      Platform.OS === 'android' &&
+        StatusBar.setBackgroundColor(colors.backgroundAppColor);
+    }, []),
+  );
 
   const goBack = () => {
     navigation.goBack();
@@ -58,8 +71,8 @@ export default function MyProfile() {
     navigation.navigate('Notification');
   };
 
-  const callFavorite = () => {
-    navigation.navigate('Favorite');
+  const callONGs = () => {
+    navigation.navigate('ONGs');
   };
 
   const callChangePassword = () => {
@@ -110,11 +123,7 @@ export default function MyProfile() {
       />
       <View style={styles.container}>
         <TouchableOpacity onPress={goBack} style={styles.backButton}>
-          <Feather
-            name="chevron-left"
-            size={32}
-            color={colors.textPrimaryColor}
-          />
+          <Feather name="chevron-left" size={32} color={colors.white} />
         </TouchableOpacity>
         <Spacer value={20} />
         <View style={styles.containePhoto}>
@@ -141,7 +150,7 @@ export default function MyProfile() {
         <Spacer value={40} />
         <View style={styles.containerActions}>
           <OptionMenu title="Notificações" action={callNotification} />
-          <OptionMenu title="Meus Favoritos" action={callFavorite} />
+          <OptionMenu title="Apoie uma ONG" action={callONGs} />
           <OptionMenu title="Alterar Senha" action={callChangePassword} />
           <OptionMenu title="Sobre" action={callAbout} />
         </View>

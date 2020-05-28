@@ -40,6 +40,7 @@ import Chat from './pages/chat/Chat';
 import {colors} from './styles/commons-styles';
 import AddPet from './pages/addPet/AddPet';
 import ListChat from './pages/chat/ListChat';
+import ONGs from './pages/ONGs/ONGs';
 
 const Stack = createStackNavigator();
 const store = createStore(rootReducer);
@@ -242,6 +243,7 @@ export default function Routes() {
             <Stack.Screen name="Search" component={Search} />
             <Stack.Screen name="MyProfile" component={MyProfile} />
             <Stack.Screen name="Notification" component={Notification} />
+            <Stack.Screen name="ONGs" component={ONGs} />
             <Stack.Screen name="Favorite" component={Favorite} />
             <Stack.Screen name="ChangePassword" component={ChangePassword} />
             <Stack.Screen name="About" component={About} />

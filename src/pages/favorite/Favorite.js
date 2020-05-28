@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StatusBar, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import Feather from 'react-native-vector-icons/Feather';
-import {useNavigation} from '@react-navigation/native';
 
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
@@ -16,12 +8,6 @@ import fonts from '../../styles/fonts';
 import NoFavorite from './components/NoFavorite';
 
 export default function Favorite() {
-  const navigation = useNavigation();
-
-  const callGoBack = () => {
-    navigation.goBack();
-  };
-
   return (
     <SafeAreaView style={commonsStyle.backgroundApp}>
       <StatusBar
