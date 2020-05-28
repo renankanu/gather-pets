@@ -192,12 +192,12 @@ export default function Routes() {
           }}
         />
         <Tab.Screen
-          name="Notifications"
-          component={Notification}
+          name="Favorite"
+          component={Favorite}
           options={{
-            tabBarLabel: 'bell',
+            tabBarLabel: 'heart',
             tabBarIcon: ({color}) => (
-              <Feather name="bell" color={color} size={22} />
+              <Feather name="heart" color={color} size={22} />
             ),
           }}
         />

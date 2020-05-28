@@ -13,6 +13,7 @@ import {useNavigation} from '@react-navigation/native';
 import {colors, commonsStyle} from '../../styles/commons-styles';
 import Spacer from '../../components/Spacer';
 import fonts from '../../styles/fonts';
+import NoFavorite from './components/NoFavorite';
 
 export default function Favorite() {
   const navigation = useNavigation();
@@ -31,10 +32,8 @@ export default function Favorite() {
         <Spacer value={20} />
         <View style={styles.containerHeader}>
           <Text style={styles.headerTitle}>Meus Favoritos</Text>
-          <TouchableOpacity onPress={callGoBack}>
-            <Feather name="x" size={24} color={colors.textPrimaryColor} />
-          </TouchableOpacity>
         </View>
+        <NoFavorite />
       </View>
     </SafeAreaView>
   );
