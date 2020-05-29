@@ -45,12 +45,12 @@ export default function Home() {
           <View style={styles.headerHome}>
             <Spacer value={26} />
             <View>
-              <Text style={styles.labelLocation}>Location</Text>
+              <Text style={styles.labelLocation}>Localização</Text>
               <View style={styles.locationContainer}>
                 <Feather name="map-pin" size={16} color={colors.black} />
                 <Spacer value={8} />
                 <Text style={styles.labelState}>Paraná</Text>
-                <Text style={styles.labelCountry}>, Brazil</Text>
+                <Text style={styles.labelCountry}>, Brasil</Text>
               </View>
             </View>
             <TouchableOpacity onPress={callMyProfile}>
