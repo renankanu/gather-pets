@@ -15,6 +15,7 @@ import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import Spacer from '../../components/Spacer';
 import fonts from '../../styles/fonts';
 import ItemListONG from './components/ItemListONG';
+import {listONGs} from '../../mocks';
 
 export default function ONGs() {
   const navigation = useNavigation();
@@ -45,10 +46,11 @@ export default function ONGs() {
           </TouchableOpacity>
         </View>
         <FlatList
+          contentContainerStyle={styles.containerFlatList}
           keyExtractor={(item) => item.id}
-          data={[1, 2, 3]}
+          data={listONGs}
           renderItem={({item}) => {
-            return <ItemListONG />;
+            return <ItemListONG ong={item} />;
           }}
         />
       </View>
@@ -70,5 +72,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.BOLD,
     fontSize: 24,
     color: colors.textPrimaryColor,
+  },
+  containerFlatList: {
+    paddingBottom: 20,
   },
 });

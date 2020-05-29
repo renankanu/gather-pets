@@ -30,6 +30,12 @@ import listChat5 from '../assets/images/listChat5.jpeg';
 import listChat6 from '../assets/images/listChat6.jpeg';
 import listChat7 from '../assets/images/listChat7.jpeg';
 
+import ong1 from '../assets/images/ong1.jpeg';
+import ong2 from '../assets/images/ong2.jpeg';
+import ong3 from '../assets/images/ong3.jpeg';
+import ong4 from '../assets/images/ong4.jpg';
+import ong5 from '../assets/images/ong5.jpeg';
+
 import allAnimals from '../assets/images/all.png';
 import dog from '../assets/images/dog.png';
 import cat from '../assets/images/cat.png';
@@ -176,5 +182,48 @@ export const listChat = [
     lastMessage: 'Até depois',
     image: listChat7,
     time: '05:33 PM',
+  },
+];
+
+export const listONGs = [
+  {
+    id: 1,
+    name: 'Nosso Pet',
+    open: '8:00 - 20:00',
+    image: ong1,
+    address: 'Av. América, 552',
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: 'Amigo Bixo',
+    open: '7:30 - 18:00',
+    image: ong2,
+    address: 'Av. América, 552',
+    rating: 4,
+  },
+  {
+    id: 3,
+    name: 'ONG ajuda bixo',
+    open: '8:00 - 20:00',
+    image: ong3,
+    address: 'Av. América, 552',
+    rating: 4,
+  },
+  {
+    id: 4,
+    name: 'Dog & Cat ONG',
+    open: '10:00 - 20:00',
+    image: ong4,
+    address: 'Av. América, 552',
+    rating: 2,
+  },
+  {
+    id: 5,
+    name: 'Santo Animal',
+    open: '8:00 - 20:00',
+    image: ong5,
+    address: 'Av. América, 552',
+    rating: 1,
   },
 ];
