@@ -229,12 +229,17 @@ export const listONGs = [
 ];
 
 export const notification = [
-  {id: 1, title: 'Maria curtiu o Tyson', date: 'Há 1 hora'},
-  {id: 2, title: 'A ONG Amigo Bicho tem novos pets', date: 'Há 2 horas'},
-  {id: 3, title: 'José curtiu o Maike', date: 'Há 2 horas'},
-  {id: 4, title: 'Nikolia curtiu o Tyson', date: 'Há 2 horas'},
-  {id: 5, title: 'Maurisa curtiu o Maike', date: 'Há 2 horas'},
-  {id: 6, title: 'Yeah! Maurisa adotou o Maike', date: 'Há 2 horas'},
-  {id: 7, title: 'Yeah! Maurisa adotou o Tyson', date: 'Há 1 dia'},
-  {id: 8, title: 'Yeah! Nikolia adotou o Moon', date: 'Há 1 dia'},
+  {id: 1, key: 1, title: 'Maria curtiu o Tyson', date: 'Há 1 hora'},
+  {
+    id: 2,
+    key: 2,
+    title: 'A ONG Amigo Bicho tem novos pets',
+    date: 'Há 2 horas',
+  },
+  {id: 3, key: 3, title: 'José curtiu o Maike', date: 'Há 2 horas'},
+  {id: 4, key: 4, title: 'Nikolia curtiu o Tyson', date: 'Há 2 horas'},
+  {id: 5, key: 5, title: 'Maurisa curtiu o Maike', date: 'Há 2 horas'},
+  {id: 6, key: 6, title: 'Yeah! Maurisa adotou o Maike', date: 'Há 2 horas'},
+  {id: 7, key: 7, title: 'Yeah! Maurisa adotou o Tyson', date: 'Há 1 dia'},
+  {id: 8, key: 8, title: 'Yeah! Nikolia adotou o Moon', date: 'Há 1 dia'},
 ];

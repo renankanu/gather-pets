@@ -22,16 +22,12 @@ import {notification} from '../../mocks';
 
 const rowSwipeAnimatedValues = {};
 notification.map((data) => {
-  rowSwipeAnimatedValues[`${data.id}`] = new Animated.Value(0);
+  rowSwipeAnimatedValues[`${data.key}`] = new Animated.Value(0);
 });
 
 export default function Notification() {
   const navigation = useNavigation();
-  const [listData, setListData] = useState(
-    notification.map((notify, index) => {
-      return {...notify, key: `${index}`};
-    }),
-  );
+  const [listData, setListData] = useState(notification);
   useFocusEffect(
     React.useCallback(() => {
       StatusBar.setBarStyle('light-content');
@@ -39,12 +35,6 @@ export default function Notification() {
         StatusBar.setBackgroundColor(colors.backgroundAppColor);
     }, []),
   );
-
-  useEffect(() => {
-    listData.map((data) => {
-      rowSwipeAnimatedValues[`${data.id}`] = new Animated.Value(0);
-    });
-  }, [listData]);
 
   const callGoBack = () => {
     navigation.goBack();
@@ -68,7 +58,7 @@ export default function Notification() {
     console.log('This row opened', rowKey);
   };
 
-  const onSwipeValueChange = (swipeData, data) => {
+  const onSwipeValueChange = (swipeData) => {
     const {key, value} = swipeData;
     rowSwipeAnimatedValues[key].setValue(Math.abs(value));
   };
@@ -93,7 +83,7 @@ export default function Notification() {
             {
               transform: [
                 {
-                  scale: rowSwipeAnimatedValues[data.item.id].interpolate({
+                  scale: rowSwipeAnimatedValues[data.item.key].interpolate({
                     inputRange: [45, 90],
                     outputRange: [0, 1],
                     extrapolate: 'clamp',
