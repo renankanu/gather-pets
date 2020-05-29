@@ -68,7 +68,10 @@ export default function Notification() {
       onPress={() => console.log('You touched me')}
       style={styles.rowFront}
       underlayColor={colors.backgroundAppColor}>
-      <Text style={styles.textNotification}>{data.item.title}</Text>
+      <View style={styles.rowNotification}>
+        <Text style={styles.textNotification}>{data.item.title}</Text>
+        <Text style={styles.timeNotification}>{data.item.date}</Text>
+      </View>
     </TouchableHighlight>
   );
 
@@ -112,7 +115,7 @@ export default function Notification() {
             <Feather name="x" size={24} color={colors.textPrimaryColor} />
           </TouchableOpacity>
         </View>
-        <Spacer value={20} />
+        <Spacer value={32} />
         <SwipeListView
           data={listData}
           renderItem={renderItem}
@@ -144,14 +147,18 @@ const styles = StyleSheet.create({
   },
   textNotification: {
     color: colors.textPrimaryColor,
+    fontSize: 16,
     fontFamily: fonts.BOLD,
+  },
+  timeNotification: {
+    color: colors.textPrimaryColor,
+    fontFamily: fonts.LIGHT,
   },
   rowFront: {
     paddingLeft: 20,
     backgroundColor: colors.backgroundAppColor,
     borderTopColor: colors.textPrimaryColor,
     borderTopWidth: 0.3,
-    justifyContent: 'center',
     height: 50,
   },
   rowBack: {
@@ -176,5 +183,9 @@ const styles = StyleSheet.create({
   trash: {
     height: 25,
     width: 25,
+  },
+  rowNotification: {
+    flex: 1,
+    justifyContent: 'space-around',
   },
 });
