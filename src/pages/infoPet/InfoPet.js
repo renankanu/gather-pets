@@ -104,6 +104,10 @@ export default function InfoPet({route}) {
     navigation.navigate('Chat');
   };
 
+  const callAdoptionSuccess = () => {
+    navigation.navigate('AdoptionComplete');
+  };
+
   return (
     <ScrollView style={styles.container}>
       <StatusBar
@@ -192,7 +196,9 @@ export default function InfoPet({route}) {
           />
         </TouchableOpacity>
         <Spacer value={20} />
-        <TouchableOpacity style={styles.buttonAdoption}>
+        <TouchableOpacity
+          onPress={callAdoptionSuccess}
+          style={styles.buttonAdoption}>
           <Text style={styles.labelButton}>Adotar</Text>
         </TouchableOpacity>
       </Animatable.View>
