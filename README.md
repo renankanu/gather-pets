@@ -21,7 +21,6 @@ Animal adoption app
 
 - Clone repo: `git clone https://github.com/renankanu/gather-pets.git`
 - Install dependencies: `yarn` or `npm install` 
-- Start: `yarn start` or `npm install`
 
 ---
 
