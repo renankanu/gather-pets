@@ -1,4 +1,9 @@
+[![project](https://img.shields.io/badge/renankanu-gather--pets-yellow)](https://github.com/renankanu/gather-pets)
 [![licence mit](https://img.shields.io/github/license/renankanu/gather-pets)](https://github.com/renankanu/gather-pets/blob/master/LICENSE)
+
+<p align="center">
+  <img alt="Logo do projeto" width="200px" src="./src/assets/images/logo.png" />
+</p>
 
 <div align="center" styles="flex-direction: row;">
   <img alt="GatherPets" title="#screen" width="250px" src="./src/assets/prints/login.png" />
@@ -10,8 +15,10 @@
 
 # Index
 
-- [Start](#-start)
-- [Contribute](#-contribute)
+- [Index](#index)
+    - [Description](#description)
+  - [:dog: Start](#dog-start)
+  - [:cat: Contribute](#cat-contribute)
 
 ---
 
