@@ -1,3 +1,5 @@
+[![licence mit](https://img.shields.io/github/license/renankanu/gather-pets)](https://github.com/renankanu/gather-pets/blob/master/LICENSE)
+
 <div align="center" styles="flex-direction: row;">
   <img alt="GatherPets" title="#screen" width="250px" src="./src/assets/prints/login.png" />
   <img alt="GatherPets" title="#screen" width="250px" src="./src/assets/prints/home.png" />
