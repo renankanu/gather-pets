@@ -1,4 +1,4 @@
-[![project](https://img.shields.io/badge/renankanu-gather--pets-yellow)](https://github.com/renankanu/gather-pets) [![licence mit](https://img.shields.io/github/license/renankanu/gather-pets)](https://github.com/renankanu/gather-pets/blob/master/LICENSE)
+[![project](https://img.shields.io/badge/renankanu-gather--pets-yellow)](https://github.com/renankanu/gather-pets) [![licence mit](https://img.shields.io/github/license/renankanu/gather-pets)](https://github.com/renankanu/gather-pets/blob/master/LICENSE) [![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555)](https://www.linkedin.com/in/renansantosbr/)
 
 <p align="center">
   <img alt="Logo do projeto" width="200px" src="./src/assets/images/logo.png" />
